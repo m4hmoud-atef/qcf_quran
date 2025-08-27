@@ -1,0 +1,2452 @@
+name: qcf_quran
+description: "High‑fidelity Quran Mushaf (QCF) rendering with per‑page bundled fonts. Includes widgets for a single ayah (QcfVerse) and a full RTL PageView mushaf (PageviewQuran), plus search and helpers."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  assets:
+    - assets/
+  fonts:
+
+    - family: "arsura"
+      fonts:
+        - asset: assets/fonts/arsura.ttf
+
+    - family: "versenumber"
+      fonts:
+        - asset: assets/fonts/versenumbers-Regular.otf
+    - family: QCF_BSML 
+      fonts:
+        - asset: assets\fonts\QCF2BSMLfonts\QCF4_QBSML-Regular.woff
+    - family: QCF_P001
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4001_X-Regular.woff
+
+    - family: QCF_P002
+      fonts:
+          - asset: assets\fonts\qcf4\QCF4002_X-Regular.woff
+
+    - family: QCF_P003
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4003_X-Regular.woff
+
+    - family: QCF_P004
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4004_X-Regular.woff
+
+    - family: QCF_P005
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4005_X-Regular.woff
+
+    - family: QCF_P006
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4006_X-Regular.woff
+
+    - family: QCF_P007
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4007_X-Regular.woff
+
+    - family: QCF_P008
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4008_X-Regular.woff
+
+    - family: QCF_P009
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4009_X-Regular.woff
+
+    - family: QCF_P010
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4010_X-Regular.woff
+
+    - family: QCF_P011
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4011_X-Regular.woff
+
+    - family: QCF_P012
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4012_X-Regular.woff
+
+    - family: QCF_P013
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4013_X-Regular.woff
+
+    - family: QCF_P014
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4014_X-Regular.woff
+
+    - family: QCF_P015
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4015_X-Regular.woff
+
+    - family: QCF_P016
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4016_X-Regular.woff
+
+    - family: QCF_P017
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4017_X-Regular.woff
+
+    - family: QCF_P018
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4018_X-Regular.woff
+
+    - family: QCF_P019
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4019_X-Regular.woff
+
+    - family: QCF_P020
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4020_X-Regular.woff
+
+    - family: QCF_P021
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4021_X-Regular.woff
+
+    - family: QCF_P022
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4022_X-Regular.woff
+
+    - family: QCF_P023
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4023_X-Regular.woff
+
+    - family: QCF_P024
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4024_X-Regular.woff
+
+    - family: QCF_P025
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4025_X-Regular.woff
+
+    - family: QCF_P026
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4026_X-Regular.woff
+
+    - family: QCF_P027
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4027_X-Regular.woff
+
+    - family: QCF_P028
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4028_X-Regular.woff
+
+    - family: QCF_P029
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4029_X-Regular.woff
+
+    - family: QCF_P030
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4030_X-Regular.woff
+
+    - family: QCF_P031
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4031_X-Regular.woff
+
+    - family: QCF_P032
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4032_X-Regular.woff
+
+    - family: QCF_P033
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4033_X-Regular.woff
+
+    - family: QCF_P034
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4034_X-Regular.woff
+
+    - family: QCF_P035
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4035_X-Regular.woff
+
+    - family: QCF_P036
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4036_X-Regular.woff
+
+    - family: QCF_P037
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4037_X-Regular.woff
+
+    - family: QCF_P038
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4038_X-Regular.woff
+
+    - family: QCF_P039
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4039_X-Regular.woff
+
+    - family: QCF_P040
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4040_X-Regular.woff
+
+    - family: QCF_P041
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4041_X-Regular.woff
+
+    - family: QCF_P042
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4042_X-Regular.woff
+
+    - family: QCF_P043
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4043_X-Regular.woff
+
+    - family: QCF_P044
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4044_X-Regular.woff
+
+    - family: QCF_P045
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4045_X-Regular.woff
+
+    - family: QCF_P046
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4046_X-Regular.woff
+
+    - family: QCF_P047
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4047_X-Regular.woff
+
+    - family: QCF_P048
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4048_X-Regular.woff
+
+    - family: QCF_P049
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4049_X-Regular.woff
+
+    - family: QCF_P050
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4050_X-Regular.woff
+
+    - family: QCF_P051
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4051_X-Regular.woff
+
+    - family: QCF_P052
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4052_X-Regular.woff
+
+    - family: QCF_P053
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4053_X-Regular.woff
+
+    - family: QCF_P054
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4054_X-Regular.woff
+
+    - family: QCF_P055
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4055_X-Regular.woff
+
+    - family: QCF_P056
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4056_X-Regular.woff
+
+    - family: QCF_P057
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4057_X-Regular.woff
+
+    - family: QCF_P058
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4058_X-Regular.woff
+
+    - family: QCF_P059
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4059_X-Regular.woff
+
+    - family: QCF_P060
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4060_X-Regular.woff
+
+    - family: QCF_P061
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4061_X-Regular.woff
+
+    - family: QCF_P062
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4062_X-Regular.woff
+
+    - family: QCF_P063
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4063_X-Regular.woff
+
+    - family: QCF_P064
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4064_X-Regular.woff
+
+    - family: QCF_P065
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4065_X-Regular.woff
+
+    - family: QCF_P066
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4066_X-Regular.woff
+
+    - family: QCF_P067
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4067_X-Regular.woff
+
+    - family: QCF_P068
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4068_X-Regular.woff
+
+    - family: QCF_P069
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4069_X-Regular.woff
+
+    - family: QCF_P070
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4070_X-Regular.woff
+
+    - family: QCF_P071
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4071_X-Regular.woff
+
+    - family: QCF_P072
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4072_X-Regular.woff
+
+    - family: QCF_P073
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4073_X-Regular.woff
+
+    - family: QCF_P074
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4074_X-Regular.woff
+
+    - family: QCF_P075
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4075_X-Regular.woff
+
+    - family: QCF_P076
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4076_X-Regular.woff
+
+    - family: QCF_P077
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4077_X-Regular.woff
+
+    - family: QCF_P078
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4078_X-Regular.woff
+
+    - family: QCF_P079
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4079_X-Regular.woff
+
+    - family: QCF_P080
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4080_X-Regular.woff
+
+    - family: QCF_P081
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4081_X-Regular.woff
+
+    - family: QCF_P082
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4082_X-Regular.woff
+
+    - family: QCF_P083
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4083_X-Regular.woff
+
+    - family: QCF_P084
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4084_X-Regular.woff
+
+    - family: QCF_P085
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4085_X-Regular.woff
+
+    - family: QCF_P086
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4086_X-Regular.woff
+
+    - family: QCF_P087
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4087_X-Regular.woff
+
+    - family: QCF_P088
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4088_X-Regular.woff
+
+    - family: QCF_P089
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4089_X-Regular.woff
+
+    - family: QCF_P090
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4090_X-Regular.woff
+
+    - family: QCF_P091
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4091_X-Regular.woff
+
+    - family: QCF_P092
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4092_X-Regular.woff
+
+    - family: QCF_P093
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4093_X-Regular.woff
+
+    - family: QCF_P094
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4094_X-Regular.woff
+
+    - family: QCF_P095
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4095_X-Regular.woff
+
+    - family: QCF_P096
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4096_X-Regular.woff
+
+    - family: QCF_P097
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4097_X-Regular.woff
+
+    - family: QCF_P098
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4098_X-Regular.woff
+
+    - family: QCF_P099
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4099_X-Regular.woff
+
+    - family: QCF_P100
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4100_X-Regular.woff
+
+    - family: QCF_P101
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4101_X-Regular.woff
+
+    - family: QCF_P102
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4102_X-Regular.woff
+
+    - family: QCF_P103
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4103_X-Regular.woff
+
+    - family: QCF_P104
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4104_X-Regular.woff
+
+    - family: QCF_P105
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4105_X-Regular.woff
+
+    - family: QCF_P106
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4106_X-Regular.woff
+
+    - family: QCF_P107
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4107_X-Regular.woff
+
+    - family: QCF_P108
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4108_X-Regular.woff
+
+    - family: QCF_P109
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4109_X-Regular.woff
+
+    - family: QCF_P110
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4110_X-Regular.woff
+
+    - family: QCF_P111
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4111_X-Regular.woff
+
+    - family: QCF_P112
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4112_X-Regular.woff
+
+    - family: QCF_P113
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4113_X-Regular.woff
+
+    - family: QCF_P114
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4114_X-Regular.woff
+
+    - family: QCF_P115
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4115_X-Regular.woff
+
+    - family: QCF_P116
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4116_X-Regular.woff
+
+    - family: QCF_P117
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4117_X-Regular.woff
+
+    - family: QCF_P118
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4118_X-Regular.woff
+
+    - family: QCF_P119
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4119_X-Regular.woff
+
+    - family: QCF_P120
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4120_X-Regular.woff
+
+    - family: QCF_P121
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4121_X-Regular.woff
+
+    - family: QCF_P122
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4122_X-Regular.woff
+
+    - family: QCF_P123
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4123_X-Regular.woff
+
+    - family: QCF_P124
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4124_X-Regular.woff
+
+    - family: QCF_P125
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4125_X-Regular.woff
+
+    - family: QCF_P126
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4126_X-Regular.woff
+
+    - family: QCF_P127
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4127_X-Regular.woff
+
+    - family: QCF_P128
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4128_X-Regular.woff
+
+    - family: QCF_P129
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4129_X-Regular.woff
+
+    - family: QCF_P130
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4130_X-Regular.woff
+
+    - family: QCF_P131
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4131_X-Regular.woff
+
+    - family: QCF_P132
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4132_X-Regular.woff
+
+    - family: QCF_P133
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4133_X-Regular.woff
+
+    - family: QCF_P134
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4134_X-Regular.woff
+
+    - family: QCF_P135
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4135_X-Regular.woff
+
+    - family: QCF_P136
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4136_X-Regular.woff
+
+    - family: QCF_P137
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4137_X-Regular.woff
+
+    - family: QCF_P138
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4138_X-Regular.woff
+
+    - family: QCF_P139
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4139_X-Regular.woff
+
+    - family: QCF_P140
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4140_X-Regular.woff
+
+    - family: QCF_P141
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4141_X-Regular.woff
+
+    - family: QCF_P142
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4142_X-Regular.woff
+
+    - family: QCF_P143
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4143_X-Regular.woff
+
+    - family: QCF_P144
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4144_X-Regular.woff
+
+    - family: QCF_P145
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4145_X-Regular.woff
+
+    - family: QCF_P146
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4146_X-Regular.woff
+
+    - family: QCF_P147
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4147_X-Regular.woff
+
+    - family: QCF_P148
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4148_X-Regular.woff
+
+    - family: QCF_P149
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4149_X-Regular.woff
+
+    - family: QCF_P150
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4150_X-Regular.woff
+
+    - family: QCF_P151
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4151_X-Regular.woff
+
+    - family: QCF_P152
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4152_X-Regular.woff
+
+    - family: QCF_P153
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4153_X-Regular.woff
+
+    - family: QCF_P154
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4154_X-Regular.woff
+
+    - family: QCF_P155
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4155_X-Regular.woff
+
+    - family: QCF_P156
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4156_X-Regular.woff
+
+    - family: QCF_P157
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4157_X-Regular.woff
+
+    - family: QCF_P158
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4158_X-Regular.woff
+
+    - family: QCF_P159
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4159_X-Regular.woff
+
+    - family: QCF_P160
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4160_X-Regular.woff
+
+    - family: QCF_P161
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4161_X-Regular.woff
+
+    - family: QCF_P162
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4162_X-Regular.woff
+
+    - family: QCF_P163
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4163_X-Regular.woff
+
+    - family: QCF_P164
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4164_X-Regular.woff
+
+    - family: QCF_P165
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4165_X-Regular.woff
+
+    - family: QCF_P166
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4166_X-Regular.woff
+
+    - family: QCF_P167
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4167_X-Regular.woff
+
+    - family: QCF_P168
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4168_X-Regular.woff
+
+    - family: QCF_P169
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4169_X-Regular.woff
+
+    - family: QCF_P170
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4170_X-Regular.woff
+
+    - family: QCF_P171
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4171_X-Regular.woff
+
+    - family: QCF_P172
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4172_X-Regular.woff
+
+    - family: QCF_P173
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4173_X-Regular.woff
+
+    - family: QCF_P174
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4174_X-Regular.woff
+
+    - family: QCF_P175
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4175_X-Regular.woff
+
+    - family: QCF_P176
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4176_X-Regular.woff
+
+    - family: QCF_P177
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4177_X-Regular.woff
+
+    - family: QCF_P178
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4178_X-Regular.woff
+
+    - family: QCF_P179
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4179_X-Regular.woff
+
+    - family: QCF_P180
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4180_X-Regular.woff
+
+    - family: QCF_P181
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4181_X-Regular.woff
+
+    - family: QCF_P182
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4182_X-Regular.woff
+
+    - family: QCF_P183
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4183_X-Regular.woff
+
+    - family: QCF_P184
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4184_X-Regular.woff
+
+    - family: QCF_P185
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4185_X-Regular.woff
+
+    - family: QCF_P186
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4186_X-Regular.woff
+
+    - family: QCF_P187
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4187_X-Regular.woff
+
+    - family: QCF_P188
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4188_X-Regular.woff
+
+    - family: QCF_P189
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4189_X-Regular.woff
+
+    - family: QCF_P190
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4190_X-Regular.woff
+
+    - family: QCF_P191
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4191_X-Regular.woff
+
+    - family: QCF_P192
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4192_X-Regular.woff
+
+    - family: QCF_P193
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4193_X-Regular.woff
+
+    - family: QCF_P194
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4194_X-Regular.woff
+
+    - family: QCF_P195
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4195_X-Regular.woff
+
+    - family: QCF_P196
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4196_X-Regular.woff
+
+    - family: QCF_P197
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4197_X-Regular.woff
+
+    - family: QCF_P198
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4198_X-Regular.woff
+
+    - family: QCF_P199
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4199_X-Regular.woff
+
+    - family: QCF_P200
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4200_X-Regular.woff
+
+    - family: QCF_P201
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4201_X-Regular.woff
+
+    - family: QCF_P202
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4202_X-Regular.woff
+
+    - family: QCF_P203
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4203_X-Regular.woff
+
+    - family: QCF_P204
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4204_X-Regular.woff
+
+    - family: QCF_P205
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4205_X-Regular.woff
+
+    - family: QCF_P206
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4206_X-Regular.woff
+
+    - family: QCF_P207
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4207_X-Regular.woff
+
+    - family: QCF_P208
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4208_X-Regular.woff
+
+    - family: QCF_P209
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4209_X-Regular.woff
+
+    - family: QCF_P210
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4210_X-Regular.woff
+
+    - family: QCF_P211
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4211_X-Regular.woff
+
+    - family: QCF_P212
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4212_X-Regular.woff
+
+    - family: QCF_P213
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4213_X-Regular.woff
+
+    - family: QCF_P214
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4214_X-Regular.woff
+
+    - family: QCF_P215
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4215_X-Regular.woff
+
+    - family: QCF_P216
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4216_X-Regular.woff
+
+    - family: QCF_P217
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4217_X-Regular.woff
+
+    - family: QCF_P218
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4218_X-Regular.woff
+
+    - family: QCF_P219
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4219_X-Regular.woff
+
+    - family: QCF_P220
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4220_X-Regular.woff
+
+    - family: QCF_P221
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4221_X-Regular.woff
+
+    - family: QCF_P222
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4222_X-Regular.woff
+
+    - family: QCF_P223
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4223_X-Regular.woff
+
+    - family: QCF_P224
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4224_X-Regular.woff
+
+    - family: QCF_P225
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4225_X-Regular.woff
+
+    - family: QCF_P226
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4226_X-Regular.woff
+
+    - family: QCF_P227
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4227_X-Regular.woff
+
+    - family: QCF_P228
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4228_X-Regular.woff
+
+    - family: QCF_P229
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4229_X-Regular.woff
+
+    - family: QCF_P230
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4230_X-Regular.woff
+
+    - family: QCF_P231
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4231_X-Regular.woff
+
+    - family: QCF_P232
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4232_X-Regular.woff
+
+    - family: QCF_P233
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4233_X-Regular.woff
+
+    - family: QCF_P234
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4234_X-Regular.woff
+
+    - family: QCF_P235
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4235_X-Regular.woff
+
+    - family: QCF_P236
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4236_X-Regular.woff
+
+    - family: QCF_P237
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4237_X-Regular.woff
+
+    - family: QCF_P238
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4238_X-Regular.woff
+
+    - family: QCF_P239
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4239_X-Regular.woff
+
+    - family: QCF_P240
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4240_X-Regular.woff
+
+    - family: QCF_P241
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4241_X-Regular.woff
+
+    - family: QCF_P242
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4242_X-Regular.woff
+
+    - family: QCF_P243
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4243_X-Regular.woff
+
+    - family: QCF_P244
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4244_X-Regular.woff
+
+    - family: QCF_P245
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4245_X-Regular.woff
+
+    - family: QCF_P246
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4246_X-Regular.woff
+
+    - family: QCF_P247
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4247_X-Regular.woff
+
+    - family: QCF_P248
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4248_X-Regular.woff
+
+    - family: QCF_P249
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4249_X-Regular.woff
+
+    - family: QCF_P250
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4250_X-Regular.woff
+
+    - family: QCF_P251
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4251_X-Regular.woff
+
+    - family: QCF_P252
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4252_X-Regular.woff
+
+    - family: QCF_P253
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4253_X-Regular.woff
+
+    - family: QCF_P254
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4254_X-Regular.woff
+
+    - family: QCF_P255
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4255_X-Regular.woff
+
+    - family: QCF_P256
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4256_X-Regular.woff
+
+    - family: QCF_P257
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4257_X-Regular.woff
+
+    - family: QCF_P258
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4258_X-Regular.woff
+
+    - family: QCF_P259
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4259_X-Regular.woff
+
+    - family: QCF_P260
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4260_X-Regular.woff
+
+    - family: QCF_P261
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4261_X-Regular.woff
+
+    - family: QCF_P262
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4262_X-Regular.woff
+
+    - family: QCF_P263
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4263_X-Regular.woff
+
+    - family: QCF_P264
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4264_X-Regular.woff
+
+    - family: QCF_P265
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4265_X-Regular.woff
+
+    - family: QCF_P266
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4266_X-Regular.woff
+
+    - family: QCF_P267
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4267_X-Regular.woff
+
+    - family: QCF_P268
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4268_X-Regular.woff
+
+    - family: QCF_P269
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4269_X-Regular.woff
+
+    - family: QCF_P270
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4270_X-Regular.woff
+
+    - family: QCF_P271
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4271_X-Regular.woff
+
+    - family: QCF_P272
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4272_X-Regular.woff
+
+    - family: QCF_P273
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4273_X-Regular.woff
+
+    - family: QCF_P274
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4274_X-Regular.woff
+
+    - family: QCF_P275
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4275_X-Regular.woff
+
+    - family: QCF_P276
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4276_X-Regular.woff
+
+    - family: QCF_P277
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4277_X-Regular.woff
+
+    - family: QCF_P278
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4278_X-Regular.woff
+
+    - family: QCF_P279
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4279_X-Regular.woff
+
+    - family: QCF_P280
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4280_X-Regular.woff
+
+    - family: QCF_P281
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4281_X-Regular.woff
+
+    - family: QCF_P282
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4282_X-Regular.woff
+
+    - family: QCF_P283
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4283_X-Regular.woff
+
+    - family: QCF_P284
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4284_X-Regular.woff
+
+    - family: QCF_P285
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4285_X-Regular.woff
+
+    - family: QCF_P286
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4286_X-Regular.woff
+
+    - family: QCF_P287
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4287_X-Regular.woff
+
+    - family: QCF_P288
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4288_X-Regular.woff
+
+    - family: QCF_P289
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4289_X-Regular.woff
+
+    - family: QCF_P290
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4290_X-Regular.woff
+
+    - family: QCF_P291
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4291_X-Regular.woff
+
+    - family: QCF_P292
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4292_X-Regular.woff
+
+    - family: QCF_P293
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4293_X-Regular.woff
+
+    - family: QCF_P294
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4294_X-Regular.woff
+
+    - family: QCF_P295
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4295_X-Regular.woff
+
+    - family: QCF_P296
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4296_X-Regular.woff
+
+    - family: QCF_P297
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4297_X-Regular.woff
+
+    - family: QCF_P298
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4298_X-Regular.woff
+
+    - family: QCF_P299
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4299_X-Regular.woff
+
+    - family: QCF_P300
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4300_X-Regular.woff
+
+    - family: QCF_P301
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4301_X-Regular.woff
+
+    - family: QCF_P302
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4302_X-Regular.woff
+
+    - family: QCF_P303
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4303_X-Regular.woff
+
+    - family: QCF_P304
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4304_X-Regular.woff
+
+    - family: QCF_P305
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4305_X-Regular.woff
+
+    - family: QCF_P306
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4306_X-Regular.woff
+
+    - family: QCF_P307
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4307_X-Regular.woff
+
+    - family: QCF_P308
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4308_X-Regular.woff
+
+    - family: QCF_P309
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4309_X-Regular.woff
+
+    - family: QCF_P310
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4310_X-Regular.woff
+
+    - family: QCF_P311
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4311_X-Regular.woff
+
+    - family: QCF_P312
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4312_X-Regular.woff
+
+    - family: QCF_P313
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4313_X-Regular.woff
+
+    - family: QCF_P314
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4314_X-Regular.woff
+
+    - family: QCF_P315
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4315_X-Regular.woff
+
+    - family: QCF_P316
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4316_X-Regular.woff
+
+    - family: QCF_P317
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4317_X-Regular.woff
+
+    - family: QCF_P318
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4318_X-Regular.woff
+
+    - family: QCF_P319
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4319_X-Regular.woff
+
+    - family: QCF_P320
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4320_X-Regular.woff
+
+    - family: QCF_P321
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4321_X-Regular.woff
+
+    - family: QCF_P322
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4322_X-Regular.woff
+
+    - family: QCF_P323
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4323_X-Regular.woff
+
+    - family: QCF_P324
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4324_X-Regular.woff
+
+    - family: QCF_P325
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4325_X-Regular.woff
+
+    - family: QCF_P326
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4326_X-Regular.woff
+
+    - family: QCF_P327
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4327_X-Regular.woff
+
+    - family: QCF_P328
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4328_X-Regular.woff
+
+    - family: QCF_P329
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4329_X-Regular.woff
+
+    - family: QCF_P330
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4330_X-Regular.woff
+
+    - family: QCF_P331
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4331_X-Regular.woff
+
+    - family: QCF_P332
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4332_X-Regular.woff
+
+    - family: QCF_P333
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4333_X-Regular.woff
+
+    - family: QCF_P334
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4334_X-Regular.woff
+
+    - family: QCF_P335
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4335_X-Regular.woff
+
+    - family: QCF_P336
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4336_X-Regular.woff
+
+    - family: QCF_P337
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4337_X-Regular.woff
+
+    - family: QCF_P338
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4338_X-Regular.woff
+
+    - family: QCF_P339
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4339_X-Regular.woff
+
+    - family: QCF_P340
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4340_X-Regular.woff
+
+    - family: QCF_P341
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4341_X-Regular.woff
+
+    - family: QCF_P342
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4342_X-Regular.woff
+
+    - family: QCF_P343
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4343_X-Regular.woff
+
+    - family: QCF_P344
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4344_X-Regular.woff
+
+    - family: QCF_P345
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4345_X-Regular.woff
+
+    - family: QCF_P346
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4346_X-Regular.woff
+
+    - family: QCF_P347
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4347_X-Regular.woff
+
+    - family: QCF_P348
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4348_X-Regular.woff
+
+    - family: QCF_P349
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4349_X-Regular.woff
+
+    - family: QCF_P350
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4350_X-Regular.woff
+
+    - family: QCF_P351
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4351_X-Regular.woff
+
+    - family: QCF_P352
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4352_X-Regular.woff
+
+    - family: QCF_P353
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4353_X-Regular.woff
+
+    - family: QCF_P354
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4354_X-Regular.woff
+
+    - family: QCF_P355
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4355_X-Regular.woff
+
+    - family: QCF_P356
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4356_X-Regular.woff
+
+    - family: QCF_P357
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4357_X-Regular.woff
+
+    - family: QCF_P358
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4358_X-Regular.woff
+
+    - family: QCF_P359
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4359_X-Regular.woff
+
+    - family: QCF_P360
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4360_X-Regular.woff
+
+    - family: QCF_P361
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4361_X-Regular.woff
+
+    - family: QCF_P362
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4362_X-Regular.woff
+
+    - family: QCF_P363
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4363_X-Regular.woff
+
+    - family: QCF_P364
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4364_X-Regular.woff
+
+    - family: QCF_P365
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4365_X-Regular.woff
+
+    - family: QCF_P366
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4366_X-Regular.woff
+
+    - family: QCF_P367
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4367_X-Regular.woff
+
+    - family: QCF_P368
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4368_X-Regular.woff
+
+    - family: QCF_P369
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4369_X-Regular.woff
+
+    - family: QCF_P370
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4370_X-Regular.woff
+
+    - family: QCF_P371
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4371_X-Regular.woff
+
+    - family: QCF_P372
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4372_X-Regular.woff
+
+    - family: QCF_P373
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4373_X-Regular.woff
+
+    - family: QCF_P374
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4374_X-Regular.woff
+
+    - family: QCF_P375
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4375_X-Regular.woff
+
+    - family: QCF_P376
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4376_X-Regular.woff
+
+    - family: QCF_P377
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4377_X-Regular.woff
+
+    - family: QCF_P378
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4378_X-Regular.woff
+
+    - family: QCF_P379
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4379_X-Regular.woff
+
+    - family: QCF_P380
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4380_X-Regular.woff
+
+    - family: QCF_P381
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4381_X-Regular.woff
+
+    - family: QCF_P382
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4382_X-Regular.woff
+
+    - family: QCF_P383
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4383_X-Regular.woff
+
+    - family: QCF_P384
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4384_X-Regular.woff
+
+    - family: QCF_P385
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4385_X-Regular.woff
+
+    - family: QCF_P386
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4386_X-Regular.woff
+
+    - family: QCF_P387
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4387_X-Regular.woff
+
+    - family: QCF_P388
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4388_X-Regular.woff
+
+    - family: QCF_P389
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4389_X-Regular.woff
+
+    - family: QCF_P390
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4390_X-Regular.woff
+
+    - family: QCF_P391
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4391_X-Regular.woff
+
+    - family: QCF_P392
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4392_X-Regular.woff
+
+    - family: QCF_P393
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4393_X-Regular.woff
+
+    - family: QCF_P394
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4394_X-Regular.woff
+
+    - family: QCF_P395
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4395_X-Regular.woff
+
+    - family: QCF_P396
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4396_X-Regular.woff
+
+    - family: QCF_P397
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4397_X-Regular.woff
+
+    - family: QCF_P398
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4398_X-Regular.woff
+
+    - family: QCF_P399
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4399_X-Regular.woff
+
+    - family: QCF_P400
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4400_X-Regular.woff
+
+    - family: QCF_P401
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4401_X-Regular.woff
+
+    - family: QCF_P402
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4402_X-Regular.woff
+
+    - family: QCF_P403
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4403_X-Regular.woff
+
+    - family: QCF_P404
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4404_X-Regular.woff
+
+    - family: QCF_P405
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4405_X-Regular.woff
+
+    - family: QCF_P406
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4406_X-Regular.woff
+
+    - family: QCF_P407
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4407_X-Regular.woff
+
+    - family: QCF_P408
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4408_X-Regular.woff
+
+    - family: QCF_P409
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4409_X-Regular.woff
+
+    - family: QCF_P410
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4410_X-Regular.woff
+
+    - family: QCF_P411
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4411_X-Regular.woff
+
+    - family: QCF_P412
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4412_X-Regular.woff
+
+    - family: QCF_P413
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4413_X-Regular.woff
+
+    - family: QCF_P414
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4414_X-Regular.woff
+
+    - family: QCF_P415
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4415_X-Regular.woff
+
+    - family: QCF_P416
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4416_X-Regular.woff
+
+    - family: QCF_P417
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4417_X-Regular.woff
+
+    - family: QCF_P418
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4418_X-Regular.woff
+
+    - family: QCF_P419
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4419_X-Regular.woff
+
+    - family: QCF_P420
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4420_X-Regular.woff
+
+    - family: QCF_P421
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4421_X-Regular.woff
+
+    - family: QCF_P422
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4422_X-Regular.woff
+
+    - family: QCF_P423
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4423_X-Regular.woff
+
+    - family: QCF_P424
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4424_X-Regular.woff
+
+    - family: QCF_P425
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4425_X-Regular.woff
+
+    - family: QCF_P426
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4426_X-Regular.woff
+
+    - family: QCF_P427
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4427_X-Regular.woff
+
+    - family: QCF_P428
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4428_X-Regular.woff
+
+    - family: QCF_P429
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4429_X-Regular.woff
+
+    - family: QCF_P430
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4430_X-Regular.woff
+
+    - family: QCF_P431
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4431_X-Regular.woff
+
+    - family: QCF_P432
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4432_X-Regular.woff
+
+    - family: QCF_P433
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4433_X-Regular.woff
+
+    - family: QCF_P434
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4434_X-Regular.woff
+
+    - family: QCF_P435
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4435_X-Regular.woff
+
+    - family: QCF_P436
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4436_X-Regular.woff
+
+    - family: QCF_P437
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4437_X-Regular.woff
+
+    - family: QCF_P438
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4438_X-Regular.woff
+
+    - family: QCF_P439
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4439_X-Regular.woff
+
+    - family: QCF_P440
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4440_X-Regular.woff
+
+    - family: QCF_P441
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4441_X-Regular.woff
+
+    - family: QCF_P442
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4442_X-Regular.woff
+
+    - family: QCF_P443
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4443_X-Regular.woff
+
+    - family: QCF_P444
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4444_X-Regular.woff
+
+    - family: QCF_P445
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4445_X-Regular.woff
+
+    - family: QCF_P446
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4446_X-Regular.woff
+
+    - family: QCF_P447
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4447_X-Regular.woff
+
+    - family: QCF_P448
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4448_X-Regular.woff
+
+    - family: QCF_P449
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4449_X-Regular.woff
+
+    - family: QCF_P450
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4450_X-Regular.woff
+
+    - family: QCF_P451
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4451_X-Regular.woff
+
+    - family: QCF_P452
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4452_X-Regular.woff
+
+    - family: QCF_P453
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4453_X-Regular.woff
+
+    - family: QCF_P454
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4454_X-Regular.woff
+
+    - family: QCF_P455
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4455_X-Regular.woff
+
+    - family: QCF_P456
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4456_X-Regular.woff
+
+    - family: QCF_P457
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4457_X-Regular.woff
+
+    - family: QCF_P458
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4458_X-Regular.woff
+
+    - family: QCF_P459
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4459_X-Regular.woff
+
+    - family: QCF_P460
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4460_X-Regular.woff
+
+    - family: QCF_P461
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4461_X-Regular.woff
+
+    - family: QCF_P462
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4462_X-Regular.woff
+
+    - family: QCF_P463
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4463_X-Regular.woff
+
+    - family: QCF_P464
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4464_X-Regular.woff
+
+    - family: QCF_P465
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4465_X-Regular.woff
+
+    - family: QCF_P466
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4466_X-Regular.woff
+
+    - family: QCF_P467
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4467_X-Regular.woff
+
+    - family: QCF_P468
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4468_X-Regular.woff
+
+    - family: QCF_P469
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4469_X-Regular.woff
+
+    - family: QCF_P470
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4470_X-Regular.woff
+
+    - family: QCF_P471
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4471_X-Regular.woff
+
+    - family: QCF_P472
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4472_X-Regular.woff
+
+    - family: QCF_P473
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4473_X-Regular.woff
+
+    - family: QCF_P474
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4474_X-Regular.woff
+
+    - family: QCF_P475
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4475_X-Regular.woff
+
+    - family: QCF_P476
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4476_X-Regular.woff
+
+    - family: QCF_P477
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4477_X-Regular.woff
+
+    - family: QCF_P478
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4478_X-Regular.woff
+
+    - family: QCF_P479
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4479_X-Regular.woff
+
+    - family: QCF_P480
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4480_X-Regular.woff
+
+    - family: QCF_P481
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4481_X-Regular.woff
+
+    - family: QCF_P482
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4482_X-Regular.woff
+
+    - family: QCF_P483
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4483_X-Regular.woff
+
+    - family: QCF_P484
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4484_X-Regular.woff
+
+    - family: QCF_P485
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4485_X-Regular.woff
+
+    - family: QCF_P486
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4486_X-Regular.woff
+
+    - family: QCF_P487
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4487_X-Regular.woff
+
+    - family: QCF_P488
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4488_X-Regular.woff
+
+    - family: QCF_P489
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4489_X-Regular.woff
+
+    - family: QCF_P490
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4490_X-Regular.woff
+
+    - family: QCF_P491
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4491_X-Regular.woff
+
+    - family: QCF_P492
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4492_X-Regular.woff
+
+    - family: QCF_P493
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4493_X-Regular.woff
+
+    - family: QCF_P494
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4494_X-Regular.woff
+
+    - family: QCF_P495
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4495_X-Regular.woff
+
+    - family: QCF_P496
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4496_X-Regular.woff
+
+    - family: QCF_P497
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4497_X-Regular.woff
+
+    - family: QCF_P498
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4498_X-Regular.woff
+
+    - family: QCF_P499
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4499_X-Regular.woff
+
+    - family: QCF_P500
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4500_X-Regular.woff
+
+    - family: QCF_P501
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4501_X-Regular.woff
+
+    - family: QCF_P502
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4502_X-Regular.woff
+
+    - family: QCF_P503
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4503_X-Regular.woff
+
+    - family: QCF_P504
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4504_X-Regular.woff
+
+    - family: QCF_P505
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4505_X-Regular.woff
+
+    - family: QCF_P506
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4506_X-Regular.woff
+
+    - family: QCF_P507
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4507_X-Regular.woff
+
+    - family: QCF_P508
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4508_X-Regular.woff
+
+    - family: QCF_P509
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4509_X-Regular.woff
+
+    - family: QCF_P510
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4510_X-Regular.woff
+
+    - family: QCF_P511
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4511_X-Regular.woff
+
+    - family: QCF_P512
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4512_X-Regular.woff
+
+    - family: QCF_P513
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4513_X-Regular.woff
+
+    - family: QCF_P514
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4514_X-Regular.woff
+
+    - family: QCF_P515
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4515_X-Regular.woff
+
+    - family: QCF_P516
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4516_X-Regular.woff
+
+    - family: QCF_P517
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4517_X-Regular.woff
+
+    - family: QCF_P518
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4518_X-Regular.woff
+
+    - family: QCF_P519
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4519_X-Regular.woff
+
+    - family: QCF_P520
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4520_X-Regular.woff
+
+    - family: QCF_P521
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4521_X-Regular.woff
+
+    - family: QCF_P522
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4522_X-Regular.woff
+
+    - family: QCF_P523
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4523_X-Regular.woff
+
+    - family: QCF_P524
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4524_X-Regular.woff
+
+    - family: QCF_P525
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4525_X-Regular.woff
+
+    - family: QCF_P526
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4526_X-Regular.woff
+
+    - family: QCF_P527
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4527_X-Regular.woff
+
+    - family: QCF_P528
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4528_X-Regular.woff
+
+    - family: QCF_P529
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4529_X-Regular.woff
+
+    - family: QCF_P530
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4530_X-Regular.woff
+
+    - family: QCF_P531
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4531_X-Regular.woff
+
+    - family: QCF_P532
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4532_X-Regular.woff
+
+    - family: QCF_P533
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4533_X-Regular.woff
+
+    - family: QCF_P534
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4534_X-Regular.woff
+
+    - family: QCF_P535
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4535_X-Regular.woff
+
+    - family: QCF_P536
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4536_X-Regular.woff
+
+    - family: QCF_P537
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4537_X-Regular.woff
+
+    - family: QCF_P538
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4538_X-Regular.woff
+
+    - family: QCF_P539
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4539_X-Regular.woff
+
+    - family: QCF_P540
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4540_X-Regular.woff
+
+    - family: QCF_P541
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4541_X-Regular.woff
+
+    - family: QCF_P542
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4542_X-Regular.woff
+
+    - family: QCF_P543
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4543_X-Regular.woff
+
+    - family: QCF_P544
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4544_X-Regular.woff
+
+    - family: QCF_P545
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4545_X-Regular.woff
+
+    - family: QCF_P546
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4546_X-Regular.woff
+
+    - family: QCF_P547
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4547_X-Regular.woff
+
+    - family: QCF_P548
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4548_X-Regular.woff
+
+    - family: QCF_P549
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4549_X-Regular.woff
+
+    - family: QCF_P550
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4550_X-Regular.woff
+
+    - family: QCF_P551
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4551_X-Regular.woff
+
+    - family: QCF_P552
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4552_X-Regular.woff
+
+    - family: QCF_P553
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4553_X-Regular.woff
+
+    - family: QCF_P554
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4554_X-Regular.woff
+
+    - family: QCF_P555
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4555_X-Regular.woff
+
+    - family: QCF_P556
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4556_X-Regular.woff
+
+    - family: QCF_P557
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4557_X-Regular.woff
+
+    - family: QCF_P558
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4558_X-Regular.woff
+
+    - family: QCF_P559
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4559_X-Regular.woff
+
+    - family: QCF_P560
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4560_X-Regular.woff
+
+    - family: QCF_P561
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4561_X-Regular.woff
+
+    - family: QCF_P562
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4562_X-Regular.woff
+
+    - family: QCF_P563
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4563_X-Regular.woff
+
+    - family: QCF_P564
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4564_X-Regular.woff
+
+    - family: QCF_P565
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4565_X-Regular.woff
+
+    - family: QCF_P566
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4566_X-Regular.woff
+
+    - family: QCF_P567
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4567_X-Regular.woff
+
+    - family: QCF_P568
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4568_X-Regular.woff
+
+    - family: QCF_P569
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4569_X-Regular.woff
+
+    - family: QCF_P570
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4570_X-Regular.woff
+
+    - family: QCF_P571
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4571_X-Regular.woff
+
+    - family: QCF_P572
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4572_X-Regular.woff
+
+    - family: QCF_P573
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4573_X-Regular.woff
+
+    - family: QCF_P574
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4574_X-Regular.woff
+
+    - family: QCF_P575
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4575_X-Regular.woff
+
+    - family: QCF_P576
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4576_X-Regular.woff
+
+    - family: QCF_P577
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4577_X-Regular.woff
+
+    - family: QCF_P578
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4578_X-Regular.woff
+
+    - family: QCF_P579
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4579_X-Regular.woff
+
+    - family: QCF_P580
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4580_X-Regular.woff
+
+    - family: QCF_P581
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4581_X-Regular.woff
+
+    - family: QCF_P582
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4582_X-Regular.woff
+
+    - family: QCF_P583
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4583_X-Regular.woff
+
+    - family: QCF_P584
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4584_X-Regular.woff
+
+    - family: QCF_P585
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4585_X-Regular.woff
+
+    - family: QCF_P586
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4586_X-Regular.woff
+
+    - family: QCF_P587
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4587_X-Regular.woff
+
+    - family: QCF_P588
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4588_X-Regular.woff
+
+    - family: QCF_P589
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4589_X-Regular.woff
+
+    - family: QCF_P590
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4590_X-Regular.woff
+
+    - family: QCF_P591
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4591_X-Regular.woff
+
+    - family: QCF_P592
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4592_X-Regular.woff
+
+    - family: QCF_P593
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4593_X-Regular.woff
+
+    - family: QCF_P594
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4594_X-Regular.woff
+
+    - family: QCF_P595
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4595_X-Regular.woff
+
+    - family: QCF_P596
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4596_X-Regular.woff
+
+    - family: QCF_P597
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4597_X-Regular.woff
+
+    - family: QCF_P598
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4598_X-Regular.woff
+
+    - family: QCF_P599
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4599_X-Regular.woff
+
+    - family: QCF_P600
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4600_X-Regular.woff
+
+    - family: QCF_P601
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4601_X-Regular.woff
+
+    - family: QCF_P602
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4602_X-Regular.woff
+
+    - family: QCF_P603
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4603_X-Regular.woff
+
+    - family: QCF_P604
+      fonts:
+        - asset: assets\fonts\qcf4\QCF4604_X-Regular.woff
+
