@@ -1,12 +1,16 @@
 # qcf_quran
 
-High-fidelity Quran Mushaf rendering in Flutter using the QCF (Quranic Computer Font) set. This package bundles per-page QCF fonts and utilities so you can:
+ [English] | [العربية](README.ar.md)
+
+ High-fidelity Quran Mushaf rendering in Flutter using the QCF (Quranic Computer Font) set. This package bundles per-page QCF fonts and utilities so you can:
 
 - Display a full mushaf with right-to-left paging.
 - Render any single ayah with the correct per-page ligatures and verse end symbol.
 - Query metadata like page numbers, surah/juz names, verse counts, and search the Arabic text.
 
 The package includes the QCF font families and a compact API to build Quran apps quickly.
+
+ Note: This package bundles 604 per-page QCF font files. The package size is large because of these embedded fonts.
 
 ## Features
 
@@ -69,6 +73,38 @@ MaterialApp(
 );
 ```
 
+#### Full mushaf with paging (responsive with ScreenUtil)
+
+```dart
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qcf_quran/qcf_quran.dart';
+
+// inside a build method (ensure you've initialized ScreenUtil)
+PageviewQuran(
+  initialPageNumber: 1,
+
+  ///sp for responsiveness
+  sp: 1.sp,
+
+  ///h for responsiveness
+  h: 1.h,
+  textColor: Colors.black,
+  onLongPress: (surah, verse) {
+    print("Long Pressed on verse $surah:$verse");
+  },
+  onLongPressUp: (surah, verse) {
+    print("Long Press Up on verse $surah:$verse");
+  },
+  onLongPressCancel: (surah, verse) {
+    print("Long Press Cancel on verse $surah:$verse");
+  },
+  onLongPressDown: (surah, verse, details) {
+    print(
+        "Long Press Down on verse $surah:$verse @ ${details.globalPosition}");
+  },
+),
+```
+
 ### Querying data
 
 ```dart
@@ -94,6 +130,12 @@ Run it with:
 flutter run -d <device>
 ```
 
+## Screenshots
+
+![Quran page view](assets/Screenshot_1756290211.png)
+
+![Search and verse](assets/Screenshot_1756290218.png)
+
 ## API overview
 
 - Rendering widgets:
@@ -111,6 +153,7 @@ flutter run -d <device>
 - The fonts are page-specific. Always use the page’s font family (handled internally by `QcfVerse` and `PageviewQuran`).
 - `searchWords(…)` is a simple text search and returns up to 50 matches.
 - Directionality is right-to-left for both verse and page view rendering.
+- For optimal responsiveness and layout, use `flutter_screenutil` and pass `sp` and `h` to `PageviewQuran` (e.g., `sp: 1.sp`, `h: 1.h`). Ensure ScreenUtil is initialized in your app.
 
 ## License
 
