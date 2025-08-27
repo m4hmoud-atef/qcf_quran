@@ -1,6 +1,10 @@
 # qcf_quran
 
 [English](README.md) | العربية
+<p align="center">
+  <img src="assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+</p>
 
 عرض مصحف عالي الدقة في Flutter باستخدام مجموعة خطوط QCF (Quranic Computer Font). تتضمن الحزمة خطوطًا لكل صفحة (604 صفحة) مع أدوات تساعدك على:
 
@@ -104,9 +108,10 @@ PageviewQuran(
 
 ## لقطات شاشة
 
-![عرض صفحة المصحف](assets/Screenshot_1756290211.png)
-
-![البحث وعرض الآية](assets/Screenshot_1756290218.png)
+<p align="center">
+  <img src="assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+</p>
 
 ## ملاحظات
 

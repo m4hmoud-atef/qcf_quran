@@ -1,6 +1,10 @@
 # qcf_quran
 
  [English] | [العربية](README.ar.md)
+<p align="center">
+  <img src="assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
+  <img src="assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
+</p>
 
  High-fidelity Quran Mushaf rendering in Flutter using the QCF (Quranic Computer Font) set. This package bundles per-page QCF fonts and utilities so you can:
 
@@ -132,9 +136,10 @@ flutter run -d <device>
 
 ## Screenshots
 
-![Quran page view](assets/Screenshot_1756290211.png)
-
-![Search and verse](assets/Screenshot_1756290218.png)
+<p align="center">
+  <img src="assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
+  <img src="assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
+</p>
 
 ## API overview
 
