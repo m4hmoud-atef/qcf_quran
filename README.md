@@ -1,9 +1,9 @@
 # qcf_quran
 
- [English] | [العربية](README.ar.md)
+ [English] | [العربية](https://github.com/m4hmoud-atef/qcf_quran/blob/main/README.ar.md)
 <p align="center">
-  <img src="assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
-  <img src="assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
 </p>
 
  High-fidelity Quran Mushaf rendering in Flutter using the QCF (Quranic Computer Font) set. This package bundles per-page QCF fonts and utilities so you can:
@@ -33,7 +33,7 @@ The package includes the QCF font families and a compact API to build Quran apps
 
 ```yaml
 dependencies:
-  qcf_quran: ^0.0.1
+  qcf_quran: ^0.0.2
 ```
 
 2) The package already bundles the necessary QCF fonts. No extra asset setup is required in your app.
@@ -137,8 +137,8 @@ flutter run -d <device>
 ## Screenshots
 
 <p align="center">
-  <img src="assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
-  <img src="assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
 </p>
 
 ## API overview

@@ -1,9 +1,9 @@
 # qcf_quran
 
-[English](README.md) | العربية
+[English](https://github.com/m4hmoud-atef/qcf_quran/blob/main/README.md) | العربية
 <p align="center">
-  <img src="assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
-  <img src="assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
 </p>
 
 عرض مصحف عالي الدقة في Flutter باستخدام مجموعة خطوط QCF (Quranic Computer Font). تتضمن الحزمة خطوطًا لكل صفحة (604 صفحة) مع أدوات تساعدك على:
@@ -30,7 +30,7 @@
 
 ```yaml
 dependencies:
-  qcf_quran: ^0.0.1
+  qcf_quran: ^0.0.2
 ```
 
 2) الحزمة تتضمن الخطوط المطلوبة مسبقًا. لا حاجة لإضافة أصول إضافية في تطبيقك.
@@ -109,8 +109,8 @@ PageviewQuran(
 ## لقطات شاشة
 
 <p align="center">
-  <img src="assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
-  <img src="assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
 </p>
 
 ## ملاحظات
