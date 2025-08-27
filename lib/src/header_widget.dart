@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 
 class HeaderWidget extends StatelessWidget {
-  final suraNumber;
+  final int suraNumber;
   const HeaderWidget({super.key, required this.suraNumber});
 
   @override
@@ -17,13 +17,13 @@ class HeaderWidget extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Image(
-              image: AssetImage("assets/mainframe.png", package: 'qcf_quran'),
+              image: const AssetImage("assets/mainframe.png", package: 'qcf_quran'),
               width: getScreenType(context) == ScreenType.large ? 250 : 372,
             ),
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                text: "${suraNumber}",
+                text: "$suraNumber",
                 style: TextStyle(
                   fontFamily: "arsura",
                   package: 'qcf_quran',

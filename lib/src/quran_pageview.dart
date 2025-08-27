@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 

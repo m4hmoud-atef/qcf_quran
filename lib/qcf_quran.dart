@@ -8,11 +8,10 @@
 /// - Data helpers: page, surah, juz mappings and Quran text
 /// - Utility functions: arabic numerals, normalization, simple search
 ///
-import 'package:flutter/services.dart';
-import 'package:qcf_quran/src/data/juzs.dart';
-import 'package:qcf_quran/src/data/page_data.dart';
-import 'package:qcf_quran/src/data/quran_text.dart';
-import 'package:qcf_quran/src/data/suwar.dart';
+import 'src/data/page_data.dart';
+import 'src/data/juzs.dart';
+import 'src/data/suwar.dart';
+import 'src/data/quran_text.dart';
 export 'src/qcf_verse.dart';
 export 'src/data/page_font_size.dart';
 export 'src/helpers/convert_to_arabic_number.dart';

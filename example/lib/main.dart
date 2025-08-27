@@ -89,15 +89,20 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 12),
 
             const SizedBox(height: 12),
-            const Text("Example (Surah 1, Verse 7):"),
+            const Text("Example (Surah 2, Verse 255):"),
             const SizedBox(height: 8),
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(vertical: 22),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade300),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: QcfVerse(surahNumber: 1, verseNumber: 7),
+              child: QcfVerse(
+                surahNumber: 2,
+                verseNumber: 255,
+                sp: 1.sp,
+                h: 1.h,
+              ),
             ),
 
             const Divider(height: 32),

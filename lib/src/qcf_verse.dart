@@ -1,21 +1,25 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:qcf_quran/qcf_quran.dart';
-import 'package:qcf_quran/src/data/page_font_size.dart';
-import 'package:qcf_quran/src/helpers/convert_to_arabic_number.dart';
 
 class QcfVerse extends StatefulWidget {
   final int surahNumber;
   final int verseNumber;
-  var fontSize;
+  final double? fontSize;
   final Color textColor;
   final Color backgroundColor;
   final VoidCallback? onLongPress;
   final VoidCallback? onLongPressUp;
+
   final VoidCallback? onLongPressCancel;
   final Function(LongPressDownDetails)? onLongPressDown;
+  //sp (adding 1.sp to get the ratio of screen size for responsive font design)
+  final double sp;
 
-  QcfVerse({
+  //h (adding 1.h to get the ratio of screen size for responsive font design)
+  final double h;
+
+  const QcfVerse({
     super.key,
     required this.surahNumber,
     required this.verseNumber,
@@ -26,6 +30,8 @@ class QcfVerse extends StatefulWidget {
     this.onLongPressUp,
     this.onLongPressCancel,
     this.onLongPressDown,
+    this.sp = 1,
+    this.h = 1,
   });
 
   @override
@@ -37,8 +43,9 @@ class _QcfVerseState extends State<QcfVerse> {
   Widget build(BuildContext context) {
     var pageNumber = getPageNumber(widget.surahNumber, widget.verseNumber);
     var pageFontSize = getFontSize(pageNumber, context);
-    print("QCF_P${pageNumber.toString().padLeft(3, '0')}");
     return RichText(
+      textDirection: TextDirection.rtl,
+      textAlign: TextAlign.center,
       text: TextSpan(
         recognizer: LongPressGestureRecognizer()
           ..onLongPress = widget.onLongPress
@@ -57,19 +64,19 @@ class _QcfVerseState extends State<QcfVerse> {
             style: TextStyle(
               fontFamily: "QCF_P${pageNumber.toString().padLeft(3, '0')}",
               package: 'qcf_quran', // 👈 required
-              height: 1.35,
+              height: 1.35 / widget.h,
             ),
           ),
         ],
         style: TextStyle(
           color: widget.textColor,
-          height: 2.0,
+          height: 2.0 / widget.h,
           letterSpacing: 0,
           package: 'qcf_quran', // 👈 required
 
           wordSpacing: 0,
           fontFamily: "QCF_P${pageNumber.toString().padLeft(3, '0')}",
-          fontSize: widget.fontSize ?? pageFontSize,
+          fontSize: widget.fontSize ?? pageFontSize / widget.sp,
           backgroundColor: widget.backgroundColor,
         ),
       ),

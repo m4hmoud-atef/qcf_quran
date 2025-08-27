@@ -160,6 +160,13 @@ flutter run -d <device>
 - Directionality is right-to-left for both verse and page view rendering.
 - For optimal responsiveness and layout, use `flutter_screenutil` and pass `sp` and `h` to `PageviewQuran` (e.g., `sp: 1.sp`, `h: 1.h`). Ensure ScreenUtil is initialized in your app.
 
+## QCF fonts
+
+- This package bundles 604 per-page QCF font files as WOFF under families named `QCF_P001` … `QCF_P604`.
+- Verse-related glyphs (e.g., basmala/verse marks) are provided via the `QCF_BSML` family.
+- Widgets `QcfVerse` and `PageviewQuran` resolve and apply the correct per-page family for you; no manual font selection is needed.
+- Avoid mixing fonts across pages. Using the page’s matching family ensures ligatures and glyph positions match the official mushaf.
+
 ## License
 
 MIT for code. QCF fonts are provided by King Fahd Complex for the Printing of the Holy Quran (KFGQPC). Ensure you comply with their terms when distributing applications.
