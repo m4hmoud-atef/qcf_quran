@@ -1,6 +1,6 @@
 name: qcf_quran
 description: "High-fidelity Quran Mushaf (QCF) rendering with per-page bundled fonts. Includes widgets for a single ayah (QcfVerse) and a full RTL PageView mushaf (PageviewQuran), plus search and helpers."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/m4hmoud-atef/qcf_quran
 repository: https://github.com/m4hmoud-atef/qcf_quran
 issue_tracker: https://github.com/m4hmoud-atef/qcf_quran/issues
