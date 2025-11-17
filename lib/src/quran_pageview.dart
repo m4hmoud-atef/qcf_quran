@@ -32,6 +32,11 @@ class PageviewQuran extends StatefulWidget {
   /// Background color for the whole page container.
   final Color pageBackgroundColor;
 
+  /// Optional callback to get background color for individual verses.
+  /// Returns a Color for the verse, or null for no background color.
+  /// Useful for highlighting selected verses.
+  final Color? Function(int surahNumber, int verseNumber)? verseBackgroundColor;
+
   /// Long-press callbacks that include the pressed verse info.
   final void Function(int surahNumber, int verseNumber)? onLongPress;
   final void Function(int surahNumber, int verseNumber)? onLongPressUp;
@@ -53,6 +58,7 @@ class PageviewQuran extends StatefulWidget {
     this.h = 1,
     this.textColor = const Color(0xFF000000),
     this.pageBackgroundColor = const Color(0xFFFFFFFF),
+    this.verseBackgroundColor,
     this.onLongPress,
     this.onLongPressUp,
     this.onLongPressCancel,
@@ -106,6 +112,7 @@ class _PageviewQuranState extends State<PageviewQuran> {
               pageNumber: pageNumber,
               fontSize: widget.fontSize,
               textColor: widget.textColor,
+              verseBackgroundColor: widget.verseBackgroundColor,
               onLongPress: widget.onLongPress,
               onLongPressUp: widget.onLongPressUp,
               onLongPressCancel: widget.onLongPressCancel,
@@ -124,6 +131,7 @@ class _PageContent extends StatelessWidget {
   final int pageNumber;
   final double? fontSize;
   final Color textColor;
+  final Color? Function(int surahNumber, int verseNumber)? verseBackgroundColor;
   final void Function(int surahNumber, int verseNumber)? onLongPress;
   final void Function(int surahNumber, int verseNumber)? onLongPressUp;
   final void Function(int surahNumber, int verseNumber)? onLongPressCancel;
@@ -145,6 +153,7 @@ class _PageContent extends StatelessWidget {
     required this.pageNumber,
     required this.fontSize,
     required this.textColor,
+    this.verseBackgroundColor,
     required this.onLongPress,
     required this.onLongPressUp,
     required this.onLongPressCancel,
@@ -176,24 +185,24 @@ class _PageContent extends StatelessWidget {
         if (v == start && v == 1) {
           verseSpans.add(WidgetSpan(child: HeaderWidget(suraNumber: surah)));
           if (pageNumber != 1 && pageNumber != 187) {
-            if(surah != 97){
-             verseSpans.add(
-              TextSpan(
-                text: " ﱁ  ﱂﱃﱄ\n",
-                style: TextStyle(
-                  fontFamily: "QCF_P001",
-                  package: 'qcf_quran',
-                  fontSize: getScreenType(context) == ScreenType.large
-                      ? 13.2 / sp
-                      : 24 / sp,
-                  color: Colors.black,
-                ),
-              ),
-            );
-            }else
-          {  verseSpans.add(
+            if (surah != 97) {
+              verseSpans.add(
                 TextSpan(
-                text:  "齃𧻓𥳐龎\n" ,
+                  text: " ﱁ  ﱂﱃﱄ\n",
+                  style: TextStyle(
+                    fontFamily: "QCF_P001",
+                    package: 'qcf_quran',
+                    fontSize: getScreenType(context) == ScreenType.large
+                        ? 13.2 / sp
+                        : 24 / sp,
+                    color: Colors.black,
+                  ),
+                ),
+              );
+            } else {
+              verseSpans.add(
+                TextSpan(
+                  text: "齃𧻓𥳐龎\n",
                   style: TextStyle(
                     fontFamily: "QCF_BSML",
                     package: 'qcf_quran',
@@ -203,7 +212,8 @@ class _PageContent extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-              ); }
+              );
+            }
           }
         }
         final spanRecognizer = LongPressGestureRecognizer();
@@ -214,12 +224,17 @@ class _PageContent extends StatelessWidget {
         spanRecognizer.onLongPressEnd = (LongPressEndDetails d) =>
             onLongPressCancel?.call(surah, v);
 
+        final verseBgColor = verseBackgroundColor?.call(surah, v);
+
         verseSpans.add(
           TextSpan(
-            text:v==ranges[0]['start']        ?  "${getVerseQCF(surah, v, verseEndSymbol: false).substring(0, 1)}\u200A${getVerseQCF(surah, v, verseEndSymbol: false).substring(1, getVerseQCF(surah, v, verseEndSymbol: false).length )}"
-        : getVerseQCF(surah, v, verseEndSymbol: false
-          ),
+            text: v == ranges[0]['start']
+                ? "${getVerseQCF(surah, v, verseEndSymbol: false).substring(0, 1)}\u200A${getVerseQCF(surah, v, verseEndSymbol: false).substring(1, getVerseQCF(surah, v, verseEndSymbol: false).length)}"
+                : getVerseQCF(surah, v, verseEndSymbol: false),
             recognizer: spanRecognizer,
+            style: verseBgColor != null
+                ? TextStyle(backgroundColor: verseBgColor)
+                : null,
             children: [
               TextSpan(
                 text: getVerseNumberQCF(surah, v),
@@ -228,6 +243,7 @@ class _PageContent extends StatelessWidget {
                   package: 'qcf_quran',
                   color: Colors.brown,
                   height: 1.35 / h,
+                  backgroundColor: verseBgColor,
                 ),
               ),
             ],
