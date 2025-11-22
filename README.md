@@ -108,7 +108,24 @@ PageviewQuran(
   },
 ),
 ```
-
+```
+make sure to initialize your screenutil as
+    return ScreenUtilInit(
+      enableScaleText: () => false,
+      minTextAdapt: true,
+      designSize: const Size(392.72727272727275, 800.7272727272727),
+      builder: (context, c) {
+        return MediaQuery(
+          data: MediaQuery.of(
+            context,
+          ).copyWith(textScaler: TextScaler.linear(1)),
+          child: Platform.isIOS
+              ? CupertinoApp(title: 'Quran qcf Demo', home: const MyHomePage())
+              : MaterialApp(title: 'Quran qcf Demo', home: const MyHomePage()),
+        );
+      },
+    );```
+or change the amount of sp and h accordingly (less than 1.h means higher, less than 1.sp means bigger font )
 ### Querying data
 
 ```dart

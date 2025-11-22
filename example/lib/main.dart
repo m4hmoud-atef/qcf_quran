@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       enableScaleText: () => false,
       minTextAdapt: true,
       designSize: const Size(392.72727272727275, 800.7272727272727),
+      
       builder: (context, c) {
         return MediaQuery(
           data: MediaQuery.of(

@@ -20,7 +20,7 @@ class _QuranHomePageState extends State<QuranHomePage> {
         sp: 1.sp,
 
         ///h for responsiveness
-        h: 1.h,
+        h: .8.h,
         textColor: Colors.black,
         onLongPress: (surah, verse) {
           print("Long Pressed on verse $surah:$verse");
@@ -33,7 +33,8 @@ class _QuranHomePageState extends State<QuranHomePage> {
         },
         onLongPressDown: (surah, verse, details) {
           print(
-              "Long Press Down on verse $surah:$verse @ ${details.globalPosition}");
+            "Long Press Down on verse $surah:$verse @ ${details.globalPosition}",
+          );
         },
       ),
     );
