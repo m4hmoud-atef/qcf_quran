@@ -42334,7 +42334,7 @@ const List quranText=[
   {
     "surah_number": 76,
     "verse_number": 23,
-    "qcfData": "ﳔﳕﳖﳗﳘﳙﳚ",
+    "qcfData": "ﳔﳕ\nﳖﳗﳘﳙﳚ",
     "content": "إِنَّا نَحۡنُ نَزَّلۡنَا عَلَيۡكَ ٱلۡقُرۡءَانَ تَنزِيلٗا",
     "text_normal": "إنا نحن نزلنا عليك القرآن تنزيلا",
     "qcfv4data": "ﳔﳕﳖﳗﳘﳙ"
