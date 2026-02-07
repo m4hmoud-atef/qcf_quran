@@ -6,8 +6,19 @@ class QcfVerse extends StatefulWidget {
   final int surahNumber;
   final int verseNumber;
   final double? fontSize;
+  
+  /// Optional theme configuration for customizing all visual aspects.
+  /// If null, uses default theme values.
+  final QcfThemeData? theme;
+  
+  /// Verse text color.
+  /// DEPRECATED: Use theme.verseTextColor instead.
   final Color textColor;
+  
+  /// Background color for verse.
+  /// DEPRECATED: Use theme.verseBackgroundColor instead.
   final Color backgroundColor;
+  
   final VoidCallback? onLongPress;
   final VoidCallback? onLongPressUp;
 
@@ -24,6 +35,7 @@ class QcfVerse extends StatefulWidget {
     required this.surahNumber,
     required this.verseNumber,
     this.fontSize,
+    this.theme,
     this.textColor = const Color(0xFF000000),
     this.backgroundColor = const Color(0x00000000),
     this.onLongPress,
@@ -41,8 +53,14 @@ class QcfVerse extends StatefulWidget {
 class _QcfVerseState extends State<QcfVerse> {
   @override
   Widget build(BuildContext context) {
+    final effectiveTheme = widget.theme ?? const QcfThemeData();
     var pageNumber = getPageNumber(widget.surahNumber, widget.verseNumber);
     var pageFontSize = getFontSize(pageNumber, context);
+    
+    final verseTextColor = widget.theme?.verseTextColor ?? widget.textColor;
+    final verseBgColor = widget.theme?.verseBackgroundColor?.call(widget.surahNumber, widget.verseNumber) ?? 
+                         (widget.backgroundColor.alpha > 0 ? widget.backgroundColor : null);
+    
     return RichText(
       textDirection: TextDirection.rtl,
       textAlign: TextAlign.center,
@@ -64,20 +82,21 @@ class _QcfVerseState extends State<QcfVerse> {
             style: TextStyle(
               fontFamily: "QCF_P${pageNumber.toString().padLeft(3, '0')}",
               package: 'qcf_quran', // 👈 required
-              height: 1.35 / widget.h,
+              color: effectiveTheme.verseNumberColor,
+              height: effectiveTheme.verseNumberHeight / widget.h,
+              backgroundColor: effectiveTheme.verseNumberBackgroundColor ?? verseBgColor,
             ),
           ),
         ],
         style: TextStyle(
-          color: widget.textColor,
-          height: 2.0 / widget.h,
-          letterSpacing: 0,
+          color: verseTextColor,
+          height: effectiveTheme.verseHeight / widget.h,
+          letterSpacing: effectiveTheme.letterSpacing,
           package: 'qcf_quran', // 👈 required
-
-          wordSpacing: 0,
+          wordSpacing: effectiveTheme.wordSpacing,
           fontFamily: "QCF_P${pageNumber.toString().padLeft(3, '0')}",
           fontSize: widget.fontSize ?? pageFontSize / widget.sp,
-          backgroundColor: widget.backgroundColor,
+          backgroundColor: verseBgColor,
         ),
       ),
     );

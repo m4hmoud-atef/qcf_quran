@@ -1,21 +1,8 @@
+//get fONTSIZE For the pages that have different sizes
 
 import 'package:flutter/material.dart';
 
-enum ScreenType { small, medium, large }
-
-ScreenType getScreenType(BuildContext context) {
-  final double screenWidth = MediaQuery.of(context).size.width;
-
-  if (screenWidth < 360) {
-    return ScreenType.small;
-  } else if (screenWidth >= 360 && screenWidth < 600) {
-    return ScreenType.medium;
-  } else {
-    return ScreenType.large;
-  }
-}
-
-double getFontSize(int index, context) {
+double getFontSize(int index, context,) {
   // if (getDeviceType(context) == DeviceType.large) {
   //     return 33;
   //   }  else if (getDeviceType(context) == DeviceType.small) {
@@ -85,8 +72,23 @@ double getFontSize(int index, context) {
     return 22.8;
   } else {
    
-    return 23.1; 
-
+    return 23.1; // default
+    //33 ipad
+//23.2default
+// 20 small devices
   }
 }
 
+enum ScreenType { small, medium, large }
+
+ScreenType getScreenType(BuildContext context) {
+  final double screenWidth = MediaQuery.of(context).size.width;
+
+  if (screenWidth < 360) {
+    return ScreenType.small;
+  } else if (screenWidth >= 360 && screenWidth < 600) {
+    return ScreenType.medium;
+  } else {
+    return ScreenType.large;
+  }
+}

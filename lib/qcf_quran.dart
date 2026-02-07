@@ -17,6 +17,8 @@ export 'src/data/page_font_size.dart';
 export 'src/helpers/convert_to_arabic_number.dart';
 export 'src/quran_pageview.dart';
 export 'src/header_widget.dart';
+export 'src/qcf_page.dart';
+export 'src/qcf_theme_data.dart';
 
 List getPageData(int pageNumber) {
   if (pageNumber < 1 || pageNumber > 604) {

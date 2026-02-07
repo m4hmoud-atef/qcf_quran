@@ -18,9 +18,9 @@ class _QuranHomePageState extends State<QuranHomePage> {
 
         ///sp for responsiveness
         sp: 1.sp,
-
+theme: QcfThemeData(),
         ///h for responsiveness
-        h: .8.h,
+        h: 1.h,
         textColor: Colors.black,
         onLongPress: (surah, verse) {
           print("Long Pressed on verse $surah:$verse");

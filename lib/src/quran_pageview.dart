@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 
 /// A horizontally swipeable Quran mushaf using internal QCF fonts.
@@ -26,11 +25,23 @@ class PageviewQuran extends StatefulWidget {
   /// Optional override font size passed to each `QcfVerse`.
   final double? fontSize;
 
+  /// Optional theme configuration for customizing all visual aspects.
+  /// If null, uses default theme values.
+  final QcfThemeData? theme;
+
   /// Verse text color.
+  /// DEPRECATED: Use theme.verseTextColor instead.
   final Color textColor;
 
   /// Background color for the whole page container.
+  /// DEPRECATED: Use theme.pageBackgroundColor instead.
   final Color pageBackgroundColor;
+
+  /// Optional callback to get background color for individual verses.
+  /// DEPRECATED: Use theme.verseBackgroundColor instead.
+  /// Returns a Color for the verse, or null for no background color.
+  /// Useful for highlighting selected verses.
+  final Color? Function(int surahNumber, int verseNumber)? verseBackgroundColor;
 
   /// Long-press callbacks that include the pressed verse info.
   final void Function(int surahNumber, int verseNumber)? onLongPress;
@@ -43,6 +54,12 @@ class PageviewQuran extends StatefulWidget {
   )?
   onLongPressDown;
 
+  /// Callback when a verse is tapped.
+  final void Function(int surahNumber, int verseNumber)? onTap;
+
+  /// Custom scroll physics for the PageView (e.g., BouncingScrollPhysics, ClampingScrollPhysics).
+  final ScrollPhysics? physics;
+
   const PageviewQuran({
     super.key,
     this.initialPageNumber = 1,
@@ -51,12 +68,16 @@ class PageviewQuran extends StatefulWidget {
     this.fontSize,
     this.sp = 1,
     this.h = 1,
+    this.theme,
     this.textColor = const Color(0xFF000000),
     this.pageBackgroundColor = const Color(0xFFFFFFFF),
+    this.verseBackgroundColor,
     this.onLongPress,
     this.onLongPressUp,
     this.onLongPressCancel,
     this.onLongPressDown,
+    this.onTap,
+    this.physics,
   }) : assert(initialPageNumber >= 1 && initialPageNumber <= totalPagesCount);
 
   @override
@@ -90,11 +111,13 @@ class _PageviewQuranState extends State<PageviewQuran> {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveTheme = widget.theme ?? const QcfThemeData();
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        color: widget.pageBackgroundColor,
+        color: widget.theme?.pageBackgroundColor ?? widget.pageBackgroundColor,
         child: PageView.builder(
+          physics: widget.physics,
           controller: _controller,
           reverse: false, // right-to-left paging order
           itemCount: totalPagesCount,
@@ -102,173 +125,23 @@ class _PageviewQuranState extends State<PageviewQuran> {
               widget.onPageChanged?.call(index + 1), // 1-based
           itemBuilder: (context, index) {
             final pageNumber = index + 1; // 1-based page
-            return _PageContent(
+            return QcfPage(
               pageNumber: pageNumber,
               fontSize: widget.fontSize,
-              textColor: widget.textColor,
+              // textColor: widget.textColor, // Deprecated and unused in modern renderer
+              verseBackgroundColor: widget.verseBackgroundColor,
               onLongPress: widget.onLongPress,
               onLongPressUp: widget.onLongPressUp,
               onLongPressCancel: widget.onLongPressCancel,
               onLongPressDown: widget.onLongPressDown,
+              onTap: widget.onTap,
               sp: widget.sp,
               h: widget.h,
+              theme: effectiveTheme,
             );
           },
         ),
       ),
-    );
-  }
-}
-
-class _PageContent extends StatelessWidget {
-  final int pageNumber;
-  final double? fontSize;
-  final Color textColor;
-  final void Function(int surahNumber, int verseNumber)? onLongPress;
-  final void Function(int surahNumber, int verseNumber)? onLongPressUp;
-  final void Function(int surahNumber, int verseNumber)? onLongPressCancel;
-
-  //sp (adding 1.sp to get the ratio of screen size for responsive font design)
-  final double sp;
-
-  //h (adding 1.h to get the ratio of screen size for responsive font design)
-  final double h;
-
-  final void Function(
-    int surahNumber,
-    int verseNumber,
-    LongPressStartDetails details,
-  )?
-  onLongPressDown;
-
-  const _PageContent({
-    required this.pageNumber,
-    required this.fontSize,
-    required this.textColor,
-    required this.onLongPress,
-    required this.onLongPressUp,
-    required this.onLongPressCancel,
-    required this.onLongPressDown,
-    required this.sp,
-    required this.h,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final ranges = getPageData(pageNumber);
-    final pageFont = "QCF_P${pageNumber.toString().padLeft(3, '0')}";
-    final baseFontSize = getFontSize(pageNumber, context) / sp;
-
-    final verseSpans = <InlineSpan>[];
-    if (pageNumber == 2 || pageNumber == 1) {
-      verseSpans.add(
-        WidgetSpan(
-          child: SizedBox(height: MediaQuery.of(context).size.height * .175),
-        ),
-      );
-    }
-    for (final r in ranges) {
-      final surah = int.parse(r['surah'].toString());
-      final start = int.parse(r['start'].toString());
-      final end = int.parse(r['end'].toString());
-
-      for (int v = start; v <= end; v++) {
-        if (v == start && v == 1) {
-          verseSpans.add(WidgetSpan(child: HeaderWidget(suraNumber: surah)));
-          if (pageNumber != 1 && pageNumber != 187) {
-            if (surah != 97 && surah != 95) {
-              verseSpans.add(
-                TextSpan(
-                  text: " ﱁ  ﱂﱃﱄ\n",
-                  style: TextStyle(
-                    fontFamily: "QCF_P001",
-                    package: 'qcf_quran',
-                    fontSize: getScreenType(context) == ScreenType.large
-                        ? 13.2 / sp
-                        : 24 / sp,
-                    color: Colors.black,
-                  ),
-                ),
-              );
-            } else {
-              verseSpans.add(
-                TextSpan(
-                  text: "齃𧻓𥳐龎\n",
-                  style: TextStyle(
-                    fontFamily: "QCF_BSML",
-                    package: 'qcf_quran',
-                    fontSize: getScreenType(context) == ScreenType.large
-                        ? 13.2 / sp
-                        : 18 / sp,
-                    color: Colors.black,
-                  ),
-                ),
-              );
-            }
-          }
-        }
-        final spanRecognizer = LongPressGestureRecognizer();
-        spanRecognizer.onLongPress = () => onLongPress?.call(surah, v);
-        spanRecognizer.onLongPressStart = (LongPressStartDetails d) =>
-            onLongPressDown?.call(surah, v, d);
-        spanRecognizer.onLongPressUp = () => onLongPressUp?.call(surah, v);
-        spanRecognizer.onLongPressEnd = (LongPressEndDetails d) =>
-            onLongPressCancel?.call(surah, v);
-
-        verseSpans.add(
-          TextSpan(
-            text: v == ranges[0]['start']
-                ? "${getVerseQCF(surah, v, verseEndSymbol: false).substring(0, 1)}\u200A${getVerseQCF(surah, v, verseEndSymbol: false).substring(1, getVerseQCF(surah, v, verseEndSymbol: false).length)}"
-                : getVerseQCF(surah, v, verseEndSymbol: false),
-            recognizer: spanRecognizer,
-            children: [
-              TextSpan(
-                text: getVerseNumberQCF(surah, v),
-                style: TextStyle(
-                  fontFamily: pageFont,
-                  package: 'qcf_quran',
-                  color: Colors.brown,
-                  height: 1.35 / h,
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-    }
-
-    return Stack(
-      children: [
-        Container(
-          padding:  EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0/h),
-          color: Colors.transparent,
-          child: Column(
-            children: [
-               
-              Text.rich(
-                TextSpan(children: verseSpans),
-                locale: const Locale("ar"),
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  fontFamily: pageFont,
-                  package: 'qcf_quran',
-                  fontSize: baseFontSize,
-                  color: textColor,
-                  height: (pageNumber == 1 || pageNumber == 2)
-                      ? 2.2/h
-                      : MediaQuery.of(context).systemGestureInsets.left > 0 == false
-                      ? 2.2/h
-                      : MediaQuery.of(context).viewPadding.top > 0
-                      ? 2.2/h
-                      : 2.2/h,
-                ),
-              ),
-            ],
-          ),
-        ),
-        
-      ],
     );
   }
 }
