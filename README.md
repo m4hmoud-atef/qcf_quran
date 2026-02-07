@@ -23,15 +23,16 @@
 
 - [Features](#-features)
 - [Getting Started](#-getting-started)
-- [Usage](#-usage)
+- [Basic Usage](#-basic-usage)
   - [Full Quran](#full-quran-pageview)
   - [Single Verse](#single-verse-rendering)
   - [Responsive Design](#responsive-design-screenutil)
-- [Customization](#-customization)
-  - [Themes & Dark Mode](#themes--dark-mode)
-  - [Developer Controls](#-developer-controls) (Interaction, Builders)
-- [Advanced / State Management](#-advanced-state-management)
-- [Data & Utilities](#-data-utilities)
+  - [Data & Search](#data--search)
+- [Advanced Usage](#-advanced-usage)
+  - [Customization (Themes)](#customization-themes)
+  - [Developer Controls](#developer-controls)
+  - [Custom Builders](#custom-builders)
+  - [State Management](#state-management)
 - [Technical Details](#-technical-details-qcf-fonts)
 - [Support](#-support)
 
@@ -60,7 +61,7 @@
 
 ---
 
-## 📖 Usage
+## 🟢 Basic Usage
 
 ### Full Quran PageView
 The easiest way to display the Quran. Handles paging, fonts, and layout automatically.
@@ -101,52 +102,62 @@ PageviewQuran(
 )
 ```
 
----
-
-## 🎨 Customization
-
-Customize everything using `QcfThemeData`.
-
-### Themes & Dark Mode
+### Data & Search
+Access Quranic data easily:
 
 ```dart
-// builtin dark mode
-PageviewQuran(theme: QcfThemeData.dark())
+// Get Surah Name
+print(getSurahNameArabic(114)); // "الناس"
 
-// builtin sepia mode
+// Get Page Number for a Verse
+print(getPageNumber(2, 255)); // 42
+
+// Search Arabic Text
+final results = searchWords("الرحمن");
+// Returns: { "occurences": 57, "result": [ { "suraNumber": 1, "verseNumber": 3 }, ... ] }
+```
+
+---
+
+## 🔴 Advanced Usage
+
+### Customization (Themes)
+Customize colors, fonts, and visibility using `QcfThemeData`.
+
+```dart
+// Built-in Themes
+PageviewQuran(theme: QcfThemeData.dark())
 PageviewQuran(theme: QcfThemeData.sepia())
 
 // Custom Theme
-final customTheme = QcfThemeData(
-  verseTextColor: Colors.indigo.shade900,
-  pageBackgroundColor: Colors.grey.shade50,
-  verseBackgroundColor: (surah, verse) {
-    if (surah == 18 && verse == 1) return Colors.yellow.withOpacity(0.3);
-    return null;
-  },
-);
-```
-
-### 🛠 Developer Controls
-
-#### Touch Interaction
-```dart
 PageviewQuran(
-  onTap: (surah, verse) => print("Tapped $surah:$verse"),
-  onLongPress: (surah, verse) => print("Long pressed $surah:$verse"),
-  // Also onLongPressUp, onLongPressDown, onLongPressCancel...
+  theme: QcfThemeData(
+    verseTextColor: Colors.indigo.shade900,
+    pageBackgroundColor: Colors.grey.shade50,
+    verseBackgroundColor: (surah, verse) {
+      if (surah == 18 && verse == 1) return Colors.yellow.withOpacity(0.3);
+      return null;
+    },
+  ),
 )
 ```
 
-#### Custom Scroll Physics
+### Developer Controls
+Handle user interactions and scroll physics.
+
 ```dart
 PageviewQuran(
+  // Interactions
+  onTap: (surah, verse) => print("Tapped $surah:$verse"),
+  onLongPress: (surah, verse) => print("Long pressed $surah:$verse"),
+  
+  // Physics
   physics: BouncingScrollPhysics(), // e.g. iOS style bounce
 )
 ```
 
-#### Custom Widget Builders
-Replace default elements (headers, basmala, verse numbers) with your own widgets:
+### Custom Builders
+Replace default elements (headers, basmala, verse numbers) with your own widgets.
 
 ```dart
 final theme = QcfThemeData(
@@ -167,21 +178,16 @@ final theme = QcfThemeData(
 );
 ```
 
----
-
-## 🧩 Advanced: State Management
-
-For full control (e.g., using **Bloc** or **Provider**), use the `QcfPage` widget directly to build your own `PageView`. This allows you to manage state outside the package.
+### State Management
+For full control (e.g., using **Bloc** or **Provider**), use the `QcfPage` widget directly to build your own `PageView`.
 
 ```dart
 PageView.builder(
   itemBuilder: (context, index) {
-    // 1. Wrap page with your state management widget
     return BlocProvider(
       create: (_) => PageBloc(),
       child: BlocBuilder<PageBloc, PageState>(
         builder: (context, state) {
-          // 2. Render the page with dynamic theme/state
           return QcfPage(
             pageNumber: index + 1,
             theme: state.theme, 
@@ -192,29 +198,6 @@ PageView.builder(
     );
   },
 )
-```
-
----
-
-## 📚 Data Utilities
-
-Access Quranic data easily:
-
-```dart
-// Get Surah Name
-print(getSurahNameArabic(114)); // "الناس"
-print(getSurahNameEnglish(114)); // "An-Nas"
-
-// Get Page Number for a Verse
-print(getPageNumber(2, 255)); // 42
-
-// Search Arabic Text
-final results = searchWords("الرحمن");
-// Returns: { "occurences": 57, "result": [ { "suraNumber": 1, "verseNumber": 3 }, ... ] }
-
-// Utilities
-print(getJuzNumber(2, 255)); // 3
-print(getPlaceOfRevelation(1)); // "Makkah"
 ```
 
 ---
