@@ -13,6 +13,7 @@ import 'src/data/juzs.dart';
 import 'src/data/suwar.dart';
 import 'src/data/quran_text.dart';
 export 'src/qcf_verse.dart';
+export 'src/qcf_verses.dart';
 export 'src/data/page_font_size.dart';
 export 'src/helpers/convert_to_arabic_number.dart';
 export 'src/quran_pageview.dart';

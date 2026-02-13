@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:example/quran_home_page.dart';
+import 'package:example/qcf_verses_example_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -90,7 +91,7 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 12),
 
             const SizedBox(height: 12),
-            const Text("Example (Surah 2, Verse 255):"),
+            const Text("Example: Single Verse (Surah 2, Verse 255):"),
             const SizedBox(height: 8),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 22),
@@ -101,6 +102,40 @@ class MyHomePage extends StatelessWidget {
               child: QcfVerse(
                 surahNumber: 2,
                 verseNumber: 255,
+                sp: 1.sp,
+                h: 1.h,
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            /// QcfVerses Widget
+            Text(
+              "• `QcfVerses` → Render multiple verses from a surah",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const QcfVersesExamplePage(),
+                ),
+              ),
+              child: const Text('📖 View QcfVerses Examples'),
+            ),
+            const SizedBox(height: 12),
+            const Text("Example: Multiple Verses (Al-Fatiha):"),
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 22),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: QcfVerses(
+                surahNumber: 1,
+                firstVerse: 1,
+                lastVerse: 7,
                 sp: 1.sp,
                 h: 1.h,
               ),
