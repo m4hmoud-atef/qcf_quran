@@ -43,6 +43,7 @@
 - **Page-Accurate Rendering**: 604 QCF fonts for exact Mushaf replication.
 - **`PageviewQuran` Widget**: Ready-to-use horizontally swipeable Quran (RTL format).
 - **`QcfVerse` Widget**: Render any single ayah with the correct font and verse number glyph.
+- **`QcfVerses` Widget**: Render multiple verses from a surah with proper alignment and responsive sizing.
 - **Rich Data API**: Get page numbers, surah names (EN/AR), juz info, verses, and more.
 - **Search**: Built-in simple Arabic text search.
 - **Full Customization**: Control colors, backgrounds, headers, and interactions via `QcfThemeData`.
@@ -89,18 +90,82 @@ Render a specific verse anywhere in your app.
 QcfVerse(
   surahNumber: 2, // Al-Baqarah
   verseNumber: 255, // Ayat al-Kursi
+  sp: 1.sp, // Responsive font scaling
+  h: 1.h,   // Responsive height scaling
+)
+```
+
+### Multiple Verses Rendering
+Render a range of verses from a single surah.
+
+```dart
+QcfVerses(
+  surahNumber: 1,   // Al-Fatiha
+  firstVerse: 1,
+  lastVerse: 7,     // All 7 verses
+  sp: 1.sp,         // Responsive font scaling
+  h: 1.h,           // Responsive height scaling
 )
 ```
 
 ### Responsive Design (ScreenUtil)
-For best results across mobile and tablets, use `flutter_screenutil` and pass scale factors:
+For best results across mobile and tablets, use `flutter_screenutil` and pass scale factors.
+
+**Important**: Initialize ScreenUtil in your app:
+
+```dart
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(392.72727272727275, 800.7272727272727),
+      minTextAdapt: true,
+      builder: (context, child) {
+        return MaterialApp(
+          home: QuranPage(),
+        );
+      },
+    );
+  }
+}
+```
+
+Then use `sp` and `h` parameters in widgets:
 
 ```dart
 PageviewQuran(
-  sp: 1.sp, // Scale font size
-  h: 1.h,   // Scale line height/spacing
+  sp: 1.sp, // Font size scaling (higher = smaller font)
+  h: 1.h,   // Line height scaling (higher = less height)
+)
+
+QcfVerse(
+  surahNumber: 2,
+  verseNumber: 255,
+  sp: 1.sp, // Font size scaling
+  h: 1.h,   // Line height scaling
+)
+
+QcfVerses(
+  surahNumber: 18,
+  firstVerse: 1,
+  lastVerse: 10,
+  sp: 1.sp, // Font size scaling
+  h: 1.h,   // Line height scaling
 )
 ```
+
+**Understanding sp and h parameters:**
+- `sp`: Controls font size scaling. **Higher values = smaller font** (e.g., `1.2.sp` makes text smaller than `1.sp`)
+- `h`: Controls line height scaling. **Higher values = less height** (e.g., `1.2.h` reduces line spacing compared to `1.h`)
+- Default: Both are `1.0` if not specified
 
 ### Data & Search
 Access Quranic data easily:
@@ -139,6 +204,51 @@ PageviewQuran(
       return null;
     },
   ),
+)
+```
+
+### QcfVerses Advanced Features
+The `QcfVerses` widget supports all the customization options available in other widgets.
+
+```dart
+// With Theme
+QcfVerses(
+  surahNumber: 18,
+  firstVerse: 1,
+  lastVerse: 10,
+  sp: 1.sp,
+  h: 1.h,
+  theme: QcfThemeData.dark(),
+)
+
+// Custom Verse Number Formatting
+QcfVerses(
+  surahNumber: 112,
+  firstVerse: 1,
+  lastVerse: 4,
+  sp: 1.sp,
+  h: 1.h,
+  verseNumberFormatter: (num) => '($num)', // Western-style numbers
+)
+
+// Hide Verse Numbers
+QcfVerses(
+  surahNumber: 103,
+  firstVerse: 1,
+  lastVerse: 3,
+  sp: 1.sp,
+  h: 1.h,
+  showVerseNumbers: false,
+)
+
+// Verses Spanning Multiple Pages (automatic font handling)
+QcfVerses(
+  surahNumber: 2,
+  firstVerse: 1,
+  lastVerse: 20, // Spans multiple pages
+  sp: 1.sp,
+  h: 1.h,
+  // Widget automatically selects correct QCF font for each verse
 )
 ```
 
