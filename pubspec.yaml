@@ -37,9 +37,9 @@ flutter:
     - assets/
   fonts:
 
-    - family: "arsura"
+    - family: "surahname"
       fonts:
-        - asset: assets/fonts/arsura.ttf
+        - asset: assets/fonts/surah-name-v2.woff
 
     - family: "versenumber"
       fonts:

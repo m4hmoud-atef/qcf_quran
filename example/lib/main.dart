@@ -102,7 +102,7 @@ class MyHomePage extends StatelessWidget {
               child: QcfVerse(
                 surahNumber: 2,
                 verseNumber: 255,
-                sp: 1.sp,
+                sp: 1.2.sp,
                 h: 1.h,
               ),
             ),

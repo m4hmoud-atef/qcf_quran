@@ -43,9 +43,9 @@ class HeaderWidget extends StatelessWidget {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                text: "$suraNumber",
+                text: "surah${suraNumber.toString().padLeft(3, '0')}",
                 style: TextStyle(
-                  fontFamily: "arsura",
+                  fontFamily: SurahFontHelper.fontFamily,
                   package: 'qcf_quran',
                   fontSize:isPortrait?  getScreenType(context) == ScreenType.large
                       ? effectiveTheme.headerFontSizeLarge

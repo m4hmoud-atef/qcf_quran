@@ -331,6 +331,15 @@ If you find this package useful, consider buying me a coffee!
 
 ## 📜 License & Credits
 
+> **Disclaimer**: This package and its bundled fonts are **NOT for commercial use**.
+
 - **Code**: MIT License.
 - **Fonts**: **King Fahd Complex for the Printing of the Holy Quran (KFGQPC)**.
 - **Data**: Mapped internally from standard datasets.
+
+---
+
+## 📞 Contact
+
+- **Package Developer (Mahmoud Atef)**: [GitHub (@m4hmoud-atef)](https://github.com/m4hmoud-atef)
+- **Font Developer**: Discord `ayman24x7`

@@ -174,6 +174,31 @@ class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
               ),
             ),
 
+            const SizedBox(height: 24),
+
+            // Example 8: Surah Name Mapping
+            _buildExampleCard(
+              title: '8. Surah Name Mapping',
+              description: 'Using "surah001", "surah002" etc. patterns',
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Mapping "surah001", "surah002", "surah114":'),
+                    const SizedBox(height: 8),
+                    RichText(
+                      text: SurahFontHelper.formatSurahText(
+                        'surah001 surah002 surah114',
+                        style: const TextStyle(fontSize: 40, color: Colors.blue),
+                        package: 'qcf_quran',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
             const SizedBox(height: 40),
           ],
         ),
