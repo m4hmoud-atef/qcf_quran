@@ -1,3 +1,12 @@
+## 0.0.5
+
+- Feat: Update Surah font and adjust alignments.
+- Docs: Add Open Source and Non-Commercial Use disclaimer.
+
+## 0.0.4
+
+- Misc: Version bump.
+
 ## 0.0.3
 
 - Fix: Improve bismillah rendering with proper spacing and line handling
