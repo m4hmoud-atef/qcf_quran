@@ -1,37 +1,40 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:qcf_quran/qcf_quran.dart';
+import 'package:qcf_quran/src/helpers/dynamic_font_loader.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    DynamicFontLoader.isTestMode = true;
+    await initQcf();
+  });
+
   group('QcfVerses Widget Tests', () {
     testWidgets('renders single verse correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: QcfVerses(
-              surahNumber: 1,
-              firstVerse: 1,
-              lastVerse: 1,
-            ),
+            body: QcfVerses(surahNumber: 1, firstVerse: 1, lastVerse: 1),
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
 
-    testWidgets('renders multiple verses correctly', (WidgetTester tester) async {
+    testWidgets('renders multiple verses correctly', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: QcfVerses(
-              surahNumber: 1,
-              firstVerse: 1,
-              lastVerse: 7,
-            ),
+            body: QcfVerses(surahNumber: 1, firstVerse: 1, lastVerse: 7),
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
@@ -49,11 +52,14 @@ void main() {
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
 
-    testWidgets('hides verse numbers when showVerseNumbers is false', (WidgetTester tester) async {
+    testWidgets('hides verse numbers when showVerseNumbers is false', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -66,11 +72,14 @@ void main() {
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
 
-    testWidgets('applies custom verse number formatter', (WidgetTester tester) async {
+    testWidgets('applies custom verse number formatter', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -78,28 +87,28 @@ void main() {
               surahNumber: 1,
               firstVerse: 1,
               lastVerse: 7,
-              verseNumberFormatter: (num) => '($num)',
+              verseNumberFormatter: (number) => '($number)',
             ),
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
 
-    testWidgets('handles verses spanning multiple pages', (WidgetTester tester) async {
+    testWidgets('handles verses spanning multiple pages', (
+      WidgetTester tester,
+    ) async {
       // Al-Baqarah verses 1-10 span pages 2-3
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: QcfVerses(
-              surahNumber: 2,
-              firstVerse: 1,
-              lastVerse: 10,
-            ),
+            body: QcfVerses(surahNumber: 2, firstVerse: 1, lastVerse: 10),
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
@@ -123,37 +132,26 @@ void main() {
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(RichText), findsWidgets);
     });
 
     test('validates surah number range', () {
       expect(
-        () => QcfVerses(
-          surahNumber: 0,
-          firstVerse: 1,
-          lastVerse: 1,
-        ),
+        () => QcfVerses(surahNumber: 0, firstVerse: 1, lastVerse: 1),
         throwsAssertionError,
       );
 
       expect(
-        () => QcfVerses(
-          surahNumber: 115,
-          firstVerse: 1,
-          lastVerse: 1,
-        ),
+        () => QcfVerses(surahNumber: 115, firstVerse: 1, lastVerse: 1),
         throwsAssertionError,
       );
     });
 
     test('validates verse range', () {
       expect(
-        () => QcfVerses(
-          surahNumber: 1,
-          firstVerse: 5,
-          lastVerse: 3,
-        ),
+        () => QcfVerses(surahNumber: 1, firstVerse: 5, lastVerse: 3),
         throwsAssertionError,
       );
     });

@@ -9,9 +9,7 @@ class QcfVersesExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('QcfVerses Examples'),
-      ),
+      appBar: AppBar(title: const Text('QcfVerses Examples')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -70,7 +68,7 @@ class QcfVersesExample extends StatelessWidget {
                 surahNumber: 112,
                 firstVerse: 1,
                 lastVerse: 4,
-                verseNumberFormatter: (num) => '($num)',
+                verseNumberFormatter: (number) => '($number)',
               ),
             ),
 
@@ -87,7 +85,7 @@ class QcfVersesExample extends StatelessWidget {
                   verseBackgroundColor: (surah, verse) {
                     // Highlight verse 3
                     if (verse == 3) {
-                      return Colors.yellow.withOpacity(0.3);
+                      return Colors.yellow.withValues(alpha: 0.3);
                     }
                     return null;
                   },
@@ -162,19 +160,13 @@ class QcfVersesExample extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             if (description != null) ...[
               const SizedBox(height: 4),
               Text(
                 description,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
               ),
             ],
             const SizedBox(height: 12),
@@ -192,10 +184,12 @@ class QcfVersesScreenshotExample extends StatefulWidget {
   const QcfVersesScreenshotExample({super.key});
 
   @override
-  State<QcfVersesScreenshotExample> createState() => _QcfVersesScreenshotExampleState();
+  State<QcfVersesScreenshotExample> createState() =>
+      _QcfVersesScreenshotExampleState();
 }
 
-class _QcfVersesScreenshotExampleState extends State<QcfVersesScreenshotExample> {
+class _QcfVersesScreenshotExampleState
+    extends State<QcfVersesScreenshotExample> {
   int surahNumber = 1;
   int firstVerse = 1;
   int lastVerse = 7;
@@ -204,9 +198,7 @@ class _QcfVersesScreenshotExampleState extends State<QcfVersesScreenshotExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Verse Screenshot Example'),
-      ),
+      appBar: AppBar(title: const Text('Verse Screenshot Example')),
       body: Column(
         children: [
           // Controls
@@ -270,7 +262,7 @@ class _QcfVersesScreenshotExampleState extends State<QcfVersesScreenshotExample>
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -306,10 +298,7 @@ class _QcfVersesScreenshotExampleState extends State<QcfVersesScreenshotExample>
                     // Footer
                     Text(
                       'Shared with Al Huda',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.grey[600],
-                      ),
+                      style: TextStyle(fontSize: 10, color: Colors.grey[600]),
                     ),
                   ],
                 ),

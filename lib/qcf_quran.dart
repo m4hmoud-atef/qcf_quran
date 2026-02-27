@@ -8,10 +8,16 @@
 /// - Data helpers: page, surah, juz mappings and Quran text
 /// - Utility functions: arabic numerals, normalization, simple search
 ///
+library;
+
+import 'dart:convert';
+import 'package:flutter/services.dart';
+import 'package:archive/archive.dart';
+
 import 'src/data/page_data.dart';
 import 'src/data/juzs.dart';
 import 'src/data/suwar.dart';
-import 'src/data/quran_text.dart';
+
 export 'src/qcf_verse.dart';
 export 'src/qcf_verses.dart';
 export 'src/data/page_font_size.dart';
@@ -21,6 +27,25 @@ export 'src/header_widget.dart';
 export 'src/qcf_page.dart';
 export 'src/qcf_theme_data.dart';
 export 'src/helpers/surah_font_helper.dart';
+
+/// The decoded Quran text from the compressed JSON asset.
+List<Map<String, dynamic>> quranText = [];
+
+/// Needs to be called once before accessing any Quran text APIs to load data from assets.
+Future<void> initQcf() async {
+  if (quranText.isNotEmpty) return;
+
+  final ByteData data = await rootBundle.load(
+    'packages/qcf_quran/assets/data/quran_text.json.gz',
+  );
+  final bytes = data.buffer.asUint8List();
+
+  final decompressed = GZipDecoder().decodeBytes(bytes);
+  final jsonStr = utf8.decode(decompressed);
+
+  final List decoded = jsonDecode(jsonStr);
+  quranText = List<Map<String, dynamic>>.from(decoded);
+}
 
 List getPageData(int pageNumber) {
   if (pageNumber < 1 || pageNumber > 604) {
@@ -266,11 +291,12 @@ Map searchWords(String words) {
     if (i['text_normal'].toString().toLowerCase().contains(
       words.toLowerCase(),
     )) {
-      if (result.length < 50)
+      if (result.length < 50) {
         result.add({
           "suraNumber": i["surah_number"],
           "verseNumber": i["verse_number"],
         });
+      }
 
       // print(i['content']);
       // result.add({"surah": i["surah_number"], "verse": i["verse_number"]});
@@ -280,11 +306,12 @@ Map searchWords(String words) {
   if (result.isEmpty) {
     for (var i in quranText) {
       if (i['content'].toString().toLowerCase().contains(words.toLowerCase())) {
-        if (result.length < 50)
+        if (result.length < 50) {
           result.add({
             "suraNumber": i["surah_number"],
             "verseNumber": i["verse_number"],
           });
+        }
 
         // print(i['content']);
         // result.add({"surah": i["surah_number"], "verse": i["verse_number"]});

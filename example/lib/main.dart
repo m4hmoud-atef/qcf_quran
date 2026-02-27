@@ -9,6 +9,7 @@ import 'package:qcf_quran/qcf_quran.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initQcf();
   runApp(const MyApp());
 }
 
@@ -22,15 +23,22 @@ class MyApp extends StatelessWidget {
       enableScaleText: () => false,
       minTextAdapt: true,
       designSize: const Size(392.72727272727275, 800.7272727272727),
-      
+
       builder: (context, c) {
         return MediaQuery(
           data: MediaQuery.of(
             context,
           ).copyWith(textScaler: TextScaler.linear(1)),
-          child: Platform.isIOS
-              ? CupertinoApp(title: 'Quran qcf Demo', home: const MyHomePage())
-              : MaterialApp(title: 'Quran qcf Demo', home: const MyHomePage()),
+          child:
+              Platform.isIOS
+                  ? CupertinoApp(
+                    title: 'Quran qcf Demo',
+                    home: const MyHomePage(),
+                  )
+                  : MaterialApp(
+                    title: 'Quran qcf Demo',
+                    home: const MyHomePage(),
+                  ),
         );
       },
     );
@@ -79,9 +87,12 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 12),
 
             ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const QuranHomePage()),
-              ),
+              onPressed:
+                  () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const QuranHomePage(),
+                    ),
+                  ),
               child: const Text(' Quran Home Page'),
             ),
             const Text(
@@ -116,11 +127,12 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const QcfVersesExamplePage(),
-                ),
-              ),
+              onPressed:
+                  () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const QcfVersesExamplePage(),
+                    ),
+                  ),
               child: const Text('📖 View QcfVerses Examples'),
             ),
             const SizedBox(height: 12),

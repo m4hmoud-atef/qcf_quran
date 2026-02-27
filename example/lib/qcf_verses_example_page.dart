@@ -12,7 +12,7 @@ class QcfVersesExamplePage extends StatefulWidget {
 
 class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
   int selectedTheme = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,9 +103,10 @@ class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: selectedTheme == 1
-                          ? Colors.grey[900]
-                          : selectedTheme == 2
+                      color:
+                          selectedTheme == 1
+                              ? Colors.grey[900]
+                              : selectedTheme == 2
                               ? const Color(0xFFF4ECD8)
                               : Colors.white,
                       borderRadius: BorderRadius.circular(12),
@@ -116,9 +117,10 @@ class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
                       lastVerse: 4,
                       sp: 1.2.sp,
                       h: 1.h,
-                      theme: selectedTheme == 1
-                          ? QcfThemeData.dark()
-                          : selectedTheme == 2
+                      theme:
+                          selectedTheme == 1
+                              ? QcfThemeData.dark()
+                              : selectedTheme == 2
                               ? QcfThemeData.sepia()
                               : const QcfThemeData(),
                     ),
@@ -139,7 +141,7 @@ class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
                 lastVerse: 6,
                 sp: 1.2.sp,
                 h: 1.h,
-                verseNumberFormatter: (num) => '($num)',
+                verseNumberFormatter: (number) => '($number)',
               ),
             ),
 
@@ -232,10 +234,7 @@ class _QcfVersesExamplePageState extends State<QcfVersesExamplePage> {
                   const SizedBox(height: 4),
                   Text(
                     description,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                   ),
                 ],
               ],

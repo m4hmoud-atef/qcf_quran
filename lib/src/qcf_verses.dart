@@ -1,5 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:qcf_quran/qcf_quran.dart';
+import 'package:qcf_quran/src/helpers/dynamic_font_loader.dart';
 
 /// A widget that renders multiple verses from the Quran in QCF format.
 ///
@@ -80,16 +81,37 @@ class QcfVerses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveTheme = theme ?? const QcfThemeData();
-    final verseSpans = _buildVerseSpans(context, effectiveTheme);
 
-    return RichText(
-      textDirection: TextDirection.rtl,
-      textAlign: textAlign,
-      locale: const Locale("ar"),
-      text: TextSpan(
-        children: verseSpans,
-        style: TextStyle(color: effectiveTheme.verseTextColor),
+    // Determine which pages are needed
+    final requiredPages = <int>{};
+    for (int v = firstVerse; v <= lastVerse; v++) {
+      requiredPages.add(getPageNumber(surahNumber, v));
+    }
+
+    return FutureBuilder(
+      future: Future.wait(
+        requiredPages.map((page) => DynamicFontLoader.loadFont(page)).toList(),
       ),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return Center(child: Text('Failed to load fonts: ${snapshot.error}'));
+        }
+
+        final verseSpans = _buildVerseSpans(context, effectiveTheme);
+
+        return RichText(
+          textDirection: TextDirection.rtl,
+          textAlign: textAlign,
+          locale: const Locale("ar"),
+          text: TextSpan(
+            children: verseSpans,
+            style: TextStyle(color: effectiveTheme.verseTextColor),
+          ),
+        );
+      },
     );
   }
 
@@ -168,7 +190,7 @@ class QcfVerses extends StatelessWidget {
                         : effectiveFontSize,
                 height: effectiveTheme.verseNumberHeight / h,
                 fontFamily: fontFamily,
-                package: 'qcf_quran',
+                // Removed package parameter for dynamic font
                 color: effectiveTheme.verseNumberColor,
                 backgroundColor: effectiveTheme.verseNumberBackgroundColor,
               ),
@@ -187,7 +209,7 @@ class QcfVerses extends StatelessWidget {
                 fontSize: effectiveFontSize,
                 height: effectiveTheme.verseNumberHeight / h,
                 fontFamily: fontFamily,
-                package: 'qcf_quran',
+                // Removed package parameter for dynamic font
                 color: effectiveTheme.verseNumberColor,
                 backgroundColor: effectiveTheme.verseNumberBackgroundColor,
               ),
@@ -214,7 +236,6 @@ class QcfVerses extends StatelessWidget {
           text: verseTextWithoutNumber,
           style: TextStyle(
             fontFamily: fontFamily,
-            package: 'qcf_quran',
             fontSize: effectiveFontSize,
             height: effectiveTheme.verseHeight / h,
             letterSpacing: effectiveTheme.letterSpacing,

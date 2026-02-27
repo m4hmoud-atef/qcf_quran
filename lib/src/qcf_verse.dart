@@ -1,6 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:qcf_quran/qcf_quran.dart';
+import 'package:qcf_quran/src/helpers/dynamic_font_loader.dart';
 
 class QcfVerse extends StatefulWidget {
   final int surahNumber;
@@ -53,83 +54,96 @@ class QcfVerse extends StatefulWidget {
 class _QcfVerseState extends State<QcfVerse> {
   @override
   Widget build(BuildContext context) {
-    final effectiveTheme = widget.theme ?? const QcfThemeData();
     var pageNumber = getPageNumber(widget.surahNumber, widget.verseNumber);
+    final effectiveTheme = widget.theme ?? const QcfThemeData();
     var pageFontSize = getFontSize(pageNumber, context);
 
-    final verseTextColor = widget.theme?.verseTextColor ?? widget.textColor;
-    final verseBgColor =
-        widget.theme?.verseBackgroundColor?.call(
+    return FutureBuilder(
+      future: DynamicFontLoader.loadFont(pageNumber),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return Center(child: Text('Failed to load font: ${snapshot.error}'));
+        }
+
+        final verseTextColor = widget.theme?.verseTextColor ?? widget.textColor;
+        final verseBgColor =
+            widget.theme?.verseBackgroundColor?.call(
+              widget.surahNumber,
+              widget.verseNumber,
+            ) ??
+            (widget.backgroundColor.a > 0 ? widget.backgroundColor : null);
+
+        final String fontFamily =
+            "QCF_P${pageNumber.toString().padLeft(3, '0')}";
+        final double effectiveFontSize =
+            widget.fontSize ?? pageFontSize / widget.sp;
+
+        // getVerseQCF(verseEndSymbol: false) now correctly strips both the glyph
+        // and trailing '\n' (if any), returning pure verse text.
+        final String textWithoutSymbol = getVerseQCF(
           widget.surahNumber,
           widget.verseNumber,
-        ) ??
-        (widget.backgroundColor.alpha > 0 ? widget.backgroundColor : null);
+          verseEndSymbol: false,
+        );
 
-    final String fontFamily = "QCF_P${pageNumber.toString().padLeft(3, '0')}";
-    final double effectiveFontSize =
-        widget.fontSize ?? pageFontSize / widget.sp;
+        // getVerseNumberQCF now correctly returns the glyph even when followed by '\n'.
+        final String verseNumberGlyph = getVerseNumberQCF(
+          widget.surahNumber,
+          widget.verseNumber,
+        );
 
-    // getVerseQCF(verseEndSymbol: false) now correctly strips both the glyph
-    // and trailing '\n' (if any), returning pure verse text.
-    final String textWithoutSymbol = getVerseQCF(
-      widget.surahNumber,
-      widget.verseNumber,
-      verseEndSymbol: false,
-    );
+        // Check if the original string had a trailing newline so we can append it
+        // after the colored glyph span without it affecting the background color box.
+        final String fullVerseText = getVerseQCF(
+          widget.surahNumber,
+          widget.verseNumber,
+          verseEndSymbol: true,
+        );
+        final bool hasTrailingNewline = fullVerseText.endsWith('\n');
 
-    // getVerseNumberQCF now correctly returns the glyph even when followed by '\n'.
-    final String verseNumberGlyph = getVerseNumberQCF(
-      widget.surahNumber,
-      widget.verseNumber,
-    );
-
-    // Check if the original string had a trailing newline so we can append it
-    // after the colored glyph span without it affecting the background color box.
-    final String fullVerseText = getVerseQCF(
-      widget.surahNumber,
-      widget.verseNumber,
-      verseEndSymbol: true,
-    );
-    final bool hasTrailingNewline = fullVerseText.endsWith('\n');
-
-    return RichText(
-      textDirection: TextDirection.rtl,
-      textAlign: TextAlign.center,
-      text: TextSpan(
-        recognizer:
-            LongPressGestureRecognizer()
-              ..onLongPress = widget.onLongPress
-              ..onLongPressDown = widget.onLongPressDown
-              ..onLongPressUp = widget.onLongPressUp
-              ..onLongPressCancel = widget.onLongPressCancel,
-        text: textWithoutSymbol,
-        locale: const Locale("ar"),
-        children: [
-          TextSpan(
-            text: verseNumberGlyph,
+        return RichText(
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            recognizer:
+                LongPressGestureRecognizer()
+                  ..onLongPress = widget.onLongPress
+                  ..onLongPressDown = widget.onLongPressDown
+                  ..onLongPressUp = widget.onLongPressUp
+                  ..onLongPressCancel = widget.onLongPressCancel,
+            text: textWithoutSymbol,
+            locale: const Locale("ar"),
+            children: [
+              TextSpan(
+                text: verseNumberGlyph,
+                style: TextStyle(
+                  fontFamily: fontFamily,
+                  // package parameter removed for dynamic fonts
+                  color: effectiveTheme.verseNumberColor,
+                  height: effectiveTheme.verseNumberHeight / widget.h,
+                  fontSize: effectiveFontSize,
+                  backgroundColor:
+                      effectiveTheme.verseNumberBackgroundColor ?? verseBgColor,
+                ),
+              ),
+              if (hasTrailingNewline) const TextSpan(text: '\n'),
+            ],
             style: TextStyle(
+              color: verseTextColor,
+              height: effectiveTheme.verseHeight / widget.h,
+              letterSpacing: effectiveTheme.letterSpacing,
+              // package parameter removed for dynamic fonts
+              wordSpacing: effectiveTheme.wordSpacing,
               fontFamily: fontFamily,
-              package: 'qcf_quran',
-              color: effectiveTheme.verseNumberColor,
-              height: effectiveTheme.verseNumberHeight / widget.h,
               fontSize: effectiveFontSize,
-              backgroundColor:
-                  effectiveTheme.verseNumberBackgroundColor ?? verseBgColor,
+              backgroundColor: verseBgColor,
             ),
           ),
-          if (hasTrailingNewline) const TextSpan(text: '\n'),
-        ],
-        style: TextStyle(
-          color: verseTextColor,
-          height: effectiveTheme.verseHeight / widget.h,
-          letterSpacing: effectiveTheme.letterSpacing,
-          package: 'qcf_quran',
-          wordSpacing: effectiveTheme.wordSpacing,
-          fontFamily: fontFamily,
-          fontSize: effectiveFontSize,
-          backgroundColor: verseBgColor,
-        ),
-      ),
+        );
+      },
     );
   }
 }

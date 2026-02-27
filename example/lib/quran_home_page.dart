@@ -18,21 +18,22 @@ class _QuranHomePageState extends State<QuranHomePage> {
 
         ///sp for responsiveness
         sp: 1.sp,
-theme: QcfThemeData(),
+        theme: QcfThemeData(),
+
         ///h for responsiveness
         h: 1.h,
         textColor: Colors.black,
         onLongPress: (surah, verse) {
-          print("Long Pressed on verse $surah:$verse");
+          debugPrint("Long Pressed on verse $surah:$verse");
         },
         onLongPressUp: (surah, verse) {
-          print("Long Press Up on verse $surah:$verse");
+          debugPrint("Long Press Up on verse $surah:$verse");
         },
         onLongPressCancel: (surah, verse) {
-          print("Long Press Cancel on verse $surah:$verse");
+          debugPrint("Long Press Cancel on verse $surah:$verse");
         },
         onLongPressDown: (surah, verse, details) {
-          print(
+          debugPrint(
             "Long Press Down on verse $surah:$verse @ ${details.globalPosition}",
           );
         },

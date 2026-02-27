@@ -7,15 +7,16 @@
 [English] | [العربية](https://github.com/m4hmoud-atef/qcf_quran/blob/main/README.ar.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="Quran page view" width="48%">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="Search and verse" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290211.png" alt="Quran page view" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290218.png" alt="Search and verse" width="48%">
 </p>
 
 **High-fidelity Quran Mushaf rendering in Flutter.**
 
-`qcf_quran` bundles **604 page-specific QCF fonts** to ensure every page looks exactly like the printed Madani Mushaf, with correct ligatures, verse endings, and scaling.
+`qcf_quran` leverages **Dynamic Font Loading** to provide a high-fidelity experience with a significantly reduced package footprint. It bundles the 604 page-specific QCF fonts into a single compressed archive, unzipping and loading them on-demand to ensure every page looks exactly like the printed Madani Mushaf.
 
-> **Note**: This package includes ~600 font files (one for each page), which increases the package size but guarantees 100% accurate rendering without internet dependency.
+> [!NOTE]
+> This package uses a single `qcf4.zip` asset. Fonts are extracted to the device's storage on first use and loaded dynamically, keeping the initial package size optimized while ensuring 100% accurate rendering.
 
 ---
 
@@ -40,7 +41,7 @@
 
 ## ✨ Features
 
-- **Page-Accurate Rendering**: 604 QCF fonts for exact Mushaf replication.
+- **Dynamic Page-Accurate Rendering**: 604 QCF fonts loaded on-demand via ZIP extraction.
 - **`PageviewQuran` Widget**: Ready-to-use horizontally swipeable Quran (RTL format).
 - **`QcfVerse` Widget**: Render any single ayah with the correct font and verse number glyph.
 - **`QcfVerses` Widget**: Render multiple verses from a surah with proper alignment and responsive sizing.
@@ -58,7 +59,17 @@
       qcf_quran: ^0.0.2
     ```
 
-2.  **Use it**: The fonts are bundled, so no extra asset configuration is needed!
+2.  **Initialize the package**: Unlike previous versions, you must initialize the data loading (GZip decompression) before using the text or font APIs.
+
+    ```dart
+    void main() async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await initQcf(); // Load and decompress Quran data
+      runApp(MyApp());
+    }
+    ```
+
+3.  **Use it**: Fonts are dynamically unzipped on first use!
 
 ---
 
@@ -314,10 +325,11 @@ PageView.builder(
 
 ## ℹ️ Technical Details (QCF Fonts)
 
-- **Fonts**: Bundles 604 WOFF font files (`QCF_P001` to `QCF_P604`).
+- **Storage**: Bundles a single `qcf4.zip` containing 604 WOFF font files.
+- **Dynamic Loading**: Uses `DynamicFontLoader` to extract fonts to the application documents directory on the fly.
+- **Compression**: Quran text (formerly a 4MB Dart file) is now a compressed `quran_text.json.gz` asset (~700KB), reducing package size significantly.
 - **Glyphs**: Verse numbers and symbols are handled via the `QCF_BSML` family.
-- **Logic**: `QcfVerse` automatically resolves the correct font family for the requested page number.
-- **Normalization**: Helper functions `normalise()` and `removeDiacritics()` are available for search implementation.
+- **Logic**: `QcfVerse` and `QcfVerses` automatically resolve the correct font family and trigger loading.
 
 ---
 

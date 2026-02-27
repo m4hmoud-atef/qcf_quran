@@ -2,21 +2,18 @@
 
 [English](https://github.com/m4hmoud-atef/qcf_quran/blob/main/README.md) | العربية
 <p align="center">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
 </p>
 
-عرض مصحف عالي الدقة في Flutter باستخدام مجموعة خطوط QCF (Quranic Computer Font). تتضمن الحزمة خطوطًا لكل صفحة (604 صفحة) مع أدوات تساعدك على:
+عرض مصحف عالي الدقة في Flutter باستخدام تقنية **التحميل الديناميكي للخطوط** لتوفير تجربة عالية الجودة مع تقليل حجم الحزمة بشكل كبير. تجمع الحزمة 604 خطاً خاصاً بالصفحات في أرشيف مضغوط واحد، يتم فكه وتحميله عند الطلب لضمان ظهور كل صفحة تماماً مثل المصحف المدني المطبوع.
 
-- عرض المصحف كاملًا مع التمرير بين الصفحات من اليمين إلى اليسار.
-- عرض آية واحدة بخط الصفحة الصحيح مع رمز نهاية الآية.
-- الاستعلام عن البيانات مثل أرقام الصفحات وأسماء السور/الأجزاء وعدد الآيات والبحث في النص العربي.
-
-ملاحظة: تحتوي الحزمة على 604 ملف خط منفصل (لكل صفحة)، لذلك فإن حجم الحزمة كبير نسبيًا بسبب تضمين هذه الخطوط.
+> [!NOTE]
+> تستخدم هذه الحزمة ملف `qcf4.zip` واحد كأصل (asset). يتم استخراج الخطوط إلى ذاكرة تخزين الجهاز عند أول استخدام وتحميلها ديناميكياً، مما يحافظ على حجم الحزمة الأولي أمثلاً مع ضمان عرض دقيق بنسبة 100%.
 
 ## المزايا
 
-- مصحف مطابق للصفحات الأصلية باستخدام خطوط QCF الداخلية (604 صفحة)
+- **عرض ديناميكي دقيق للصفحات**: يتم تحميل 604 خطاً من نوع QCF عند الطلب عبر استخراج ملف ZIP.
 - `PageviewQuran`: صفحات أفقية قابلة للتمرير RTL وتطبيق الخط المناسب لكل صفحة تلقائيًا
 - `QcfVerse`: عرض آية واحدة بالخط الصحيح ورقم الآية
 - أدوات وبيانات:
@@ -33,7 +30,17 @@ dependencies:
   qcf_quran: ^0.0.2
 ```
 
-2) الحزمة تتضمن الخطوط المطلوبة مسبقًا. لا حاجة لإضافة أصول إضافية في تطبيقك.
+2) **تهيئة الحزمة**: على عكس الإصدارات السابقة، يجب عليك تهيئة تحميل البيانات (فك ضغط GZip) قبل استخدام واجهات برمجة تطبيقات النص أو الخطوط.
+
+    ```dart
+    void main() async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await initQcf(); // تحميل وفك ضغط بيانات القرآن
+      runApp(MyApp());
+    }
+    ```
+
+3) **الاستخدام**: يتم فك ضغط الخطوط ديناميكياً عند أول استخدام!
 
 ## الاستخدام
 
@@ -109,8 +116,8 @@ PageviewQuran(
 ## لقطات شاشة
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
-  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/assets/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290211.png" alt="عرض صفحة المصحف" width="48%">
+  <img src="https://raw.githubusercontent.com/m4hmoud-atef/qcf_quran/main/screenshots/Screenshot_1756290218.png" alt="البحث وعرض الآية" width="48%">
 </p>
 
 ## ملاحظات
@@ -121,10 +128,11 @@ PageviewQuran(
 
 ## خطوط QCF
 
-- تحتوي الحزمة على 604 ملف خط من نوع WOFF، لكل صفحة عائلة خط باسم `QCF_P001` … `QCF_P604`.
-- الرموز المتعلقة بالآيات (مثل البسملة وعلامات نهاية الآية) متوفرة عبر عائلة `QCF_BSML`.
-- يقوم الودجتان `QcfVerse` و`PageviewQuran` باختيار وتطبيق عائلة الخط المطابقة للصفحة تلقائيًا؛ لا حاجة لاختيارها يدويًا.
-- تجنّب خلط خطوط صفحات مختلفة. استخدام عائلة الصفحة يضمن مطابقة التراكيب ومواضع الحروف للمصحف المعتمد.
+- **التخزين**: تضم ملف `qcf4.zip` واحداً يحتوي على 604 ملفات خط WOFF.
+- **التحميل الديناميكي**: تستخدم `DynamicFontLoader` لاستخراج الخطوط إلى دليل مستندات التطبيق بشكل فوري.
+- **الضغط**: أصبح نص القرآن (الذي كان سابقاً ملف Dart بحجم 4.1 ميجابايت) الآن أصل (asset) مضغوط `quran_text.json.gz` (~700 كيلوبايت)، مما يقلل حجم الحزمة بشكل كبير.
+- **الرموز**: يتم التعامل مع أرقام الآيات والرموز عبر عائلة `QCF_BSML`.
+- **المنطق**: يقوم `QcfVerse` و `QcfVerses` تلقائياً بتحديد عائلة الخط المطابقة وبدء التحميل.
 
 ## مرجع فيديو
 
