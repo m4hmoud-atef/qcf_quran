@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 
 class QuranHomePage extends StatefulWidget {
-  const QuranHomePage({super.key});
+  final int? initialPageNumber;
+  const QuranHomePage({super.key, this.initialPageNumber});
 
   @override
   State<QuranHomePage> createState() => _QuranHomePageState();
@@ -14,10 +15,7 @@ class _QuranHomePageState extends State<QuranHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageviewQuran(
-        initialPageNumber: 5,
-
-        ///sp for responsiveness
-        sp: 1.sp,
+        initialPageNumber: widget.initialPageNumber ?? 5,
 theme: QcfThemeData(),
         ///h for responsiveness
         h: 1.h,

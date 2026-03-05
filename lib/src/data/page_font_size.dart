@@ -18,9 +18,13 @@ double getFontSize(int index, context,) {
     }else
   if (index == 1 || index == 2) {
     return 25;
+  } else if (index >= 550) {
+    return 22;
   } else if (index == 145 || index == 585) {
     return 22.7;
-  } else if (index == 532 || index == 533 || index == 523||index==577) {
+  } else if (        index == 566||
+    index == 565 ||
+index == 532 || index == 533 || index == 523||index==577||index==535) {
     return 22.5;
   } else if (index == 116 || index == 156) {
     return 23.4;
@@ -38,7 +42,6 @@ double getFontSize(int index, context,) {
       index == 448 ||
       index == 527 ||
       index == 535 ||
-      index == 565 ||
       index == 566 ||
       index == 569 ||
       index == 574 ||
@@ -70,10 +73,9 @@ double getFontSize(int index, context,) {
       index == 446 ||
       index == 447) {
     return 22.8;
-  } else {
-   
-    return 23.1; // default
-    //33 ipad
+  }else
+    return 23; // default
+ {   //33 ipad
 //23.2default
 // 20 small devices
   }

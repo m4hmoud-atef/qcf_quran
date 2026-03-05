@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:example/quran_home_page.dart';
+import 'package:example/surah_list_page.dart';
 import 'package:example/qcf_verses_example_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -84,8 +85,12 @@ class MyHomePage extends StatelessWidget {
               ),
               child: const Text(' Quran Home Page'),
             ),
-            const Text(
-              "Make sure to use screenutil package for responsive design\n adding (1.sp, in sp and 1.h, in h parameters)",
+            const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SurahListPage()),
+              ),
+              child: const Text('📖 Surah List'),
             ),
 
             const SizedBox(height: 12),

@@ -111,23 +111,15 @@ class QcfVerses extends StatelessWidget {
         verseNumber,
         verseEndSymbol: true,
       );
+
+
       int pageNumber = getPageNumber(surahNumber, verseNumber);
       String fontFamily = "QCF_P${pageNumber.toString().padLeft(3, '0')}";
 
       // Get page data to check if this verse starts a page
       final pageData = getPageData(pageNumber);
       bool isPageStart = pageData[0]["start"] == verseNumber;
-
-      // Add thin space after first character if verse starts a page
-      if (isPageStart && verseText.length > 1) {
-        verseText =
-            "${verseText.substring(0, 1)}\u200A${verseText.substring(1)}";
-      }
-
-      // Remove leading newline for the first verse in the range
-      if (verseNumber == firstVerse && verseText.startsWith("\n")) {
-        verseText = verseText.replaceFirst("\n", "");
-      }
+      bool isPageEnd = pageData[0]["end"] == verseNumber;
 
       // Determine if verse ends with newline
       bool endsWithNewline = verseText.endsWith("\n");
@@ -138,6 +130,20 @@ class QcfVerses extends StatelessWidget {
         verseNumber,
         verseEndSymbol: false,
       );
+      if(isPageEnd){
+        verseTextWithoutNumber = verseTextWithoutNumber+"\n";
+      }
+
+      // Remove leading newline for the first verse in the range
+      if (verseNumber == firstVerse && verseTextWithoutNumber.startsWith("\n")) {
+        verseTextWithoutNumber = verseTextWithoutNumber.replaceFirst("\n", "");
+      }
+
+      // Add thin space after first character if verse starts a page
+      if (isPageStart && verseTextWithoutNumber.length > 1) {
+        verseTextWithoutNumber =
+            "${verseTextWithoutNumber.substring(0, 1)}\u200A${verseTextWithoutNumber.substring(1)}";
+      }
 
       // Calculate responsive font size
       double effectiveFontSize =

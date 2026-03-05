@@ -37387,7 +37387,7 @@ const List quranText=[
   {
     "surah_number": 55,
     "verse_number": 71,
-    "qcfData": "ﱅﱆﱇﱈﱉ\n",
+    "qcfData": "ﱅﱆﱇﱈﱉ",
     "content": "فَبِأَيِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ",
     "text_normal": "فبأي آلاء ربكما تكذبان",
     "qcfv4data": "ﱅﱆﱇﱈ"
@@ -37395,7 +37395,7 @@ const List quranText=[
   {
     "surah_number": 55,
     "verse_number": 72,
-    "qcfData": "ﱊﱋﱌﱍﱎ",
+    "qcfData": "\nﱊﱋﱌﱍﱎ",
     "content": "حُورٞ مَّقۡصُورَٰتٞ فِي ٱلۡخِيَامِ",
     "text_normal": "حور مقصورات في الخيام",
     "qcfv4data": "ﱊﱋﱌﱍ"
@@ -37786,7 +37786,7 @@ const List quranText=[
   {
     "surah_number": 56,
     "verse_number": 44,
-    "qcfData": "ﲴﲵﲶﲷﲸ",
+    "qcfData": "\nﲴﲵﲶﲷﲸ",
     "content": "لَّا بَارِدٖ وَلَا كَرِيمٍ",
     "text_normal": "لا بارد ولا كريم",
     "qcfv4data": "ﲴﲵﲶﲷ"
@@ -42326,7 +42326,7 @@ const List quranText=[
   {
     "surah_number": 76,
     "verse_number": 22,
-    "qcfData": "ﳋﳌﳍﳎﳏﳐﳑﳒﳓ",
+    "qcfData": "ﳋﳌﳍﳎﳏﳐﳑﳒﳓ\n",
     "content": "إِنَّ هَٰذَا كَانَ لَكُمۡ جَزَآءٗ وَكَانَ سَعۡيُكُم مَّشۡكُورًا",
     "text_normal": "إن هذا كان لكم جزاء وكان سعيكم مشكورا",
     "qcfv4data": "ﳋﳌﳍﳎﳏﳐﳑﳒ"

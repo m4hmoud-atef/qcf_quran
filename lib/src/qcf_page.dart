@@ -177,18 +177,40 @@ class QcfPage extends StatelessWidget {
           );
         }
 
+        // Check if the original string had a trailing newline so we can append it
+        // after the colored glyph span without it affecting the background color box.
+        final String fullVerseText = getVerseQCF(
+          surah,
+          v,
+          verseEndSymbol: true,
+        );
+        final bool hasTrailingNewline = fullVerseText.endsWith('\n');
+
+        String textWithoutSymbol = getVerseQCF(surah, v, verseEndSymbol: false);
+
+        // Remove leading newline for the first verse in the range
+        if (v == ranges[0]['start'] && textWithoutSymbol.startsWith("\n")) {
+          textWithoutSymbol = textWithoutSymbol.replaceFirst("\n", "");
+        }
+
+        // Add thin space after first character if verse starts a page/range
+        if (v == ranges[0]['start'] && textWithoutSymbol.length > 1) {
+          textWithoutSymbol =
+              "${textWithoutSymbol.substring(0, 1)}\u200A${textWithoutSymbol.substring(1)}";
+        }
+
         verseSpans.add(
           TextSpan(
-            text:
-                v == ranges[0]['start']
-                    ? "${getVerseQCF(surah, v, verseEndSymbol: false).substring(0, 1)}\u200A${getVerseQCF(surah, v, verseEndSymbol: false).substring(1, getVerseQCF(surah, v, verseEndSymbol: false).length)}"
-                    : getVerseQCF(surah, v, verseEndSymbol: false),
+            text: textWithoutSymbol,
             recognizer: recognizer,
             style:
                 verseBgColor != null
                     ? TextStyle(backgroundColor: verseBgColor)
                     : null,
-            children: [verseNumberSpan],
+            children: [
+              verseNumberSpan,
+              if (hasTrailingNewline) const TextSpan(text: '\n'),
+            ],
           ),
         );
       }
